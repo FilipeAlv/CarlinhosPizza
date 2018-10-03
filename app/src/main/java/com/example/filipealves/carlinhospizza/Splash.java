@@ -22,7 +22,7 @@ public class Splash extends AppCompatActivity {
 
     private static int SPLASH_TIME_OUT = 4000;
     public static List<Produto> PRODUTOS;
-    private Usuario usuario = new Usuario("filipe", "filipe");
+    private Usuario usuario = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
