@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import com.example.filipealves.carlinhospizza.models.Produto;
+import com.example.filipealves.carlinhospizza.models.Usuario;
 import com.example.filipealves.carlinhospizza.retrofit.RetrofitConfig;
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class Splash extends AppCompatActivity {
 
     private static int SPLASH_TIME_OUT = 4000;
     public static List<Produto> PRODUTOS;
+    private Usuario usuario = new Usuario("filipe", "filipe");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +43,12 @@ public class Splash extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent i = new Intent(Splash.this, MainActivity.class);
+                    Intent i;
+                    if (usuario == null){
+                        i  = new Intent(Splash.this, Login.class);
+                     } else{
+                        i  = new Intent(Splash.this, MainActivity.class);
+                    }
                     startActivity(i);
                     finish();
                 }
