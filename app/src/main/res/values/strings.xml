@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Carlinhos Pizza</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="titles_Principal">
+        <item>Salgados</item>
+        <item>Bebidas</item>
+    </string-array>
+
+    <string-array name="titles_Secundaria_tab_1">
+        <item>Pizzas</item>
+        <item>Pasteis</item>
+    </string-array>
+
+    <string-array name="titles_Secundaria_tab_2">
+        <item>Sucos</item>
+        <item>Refrigerantes</item>
+    </string-array>
+
+    <string name="title_activity_card">card</string>
+    <string name="title_activity_splash">Splash</string>
+    <string name="title_activity_meus_pedidos">Meus Pedidos</string>
+</resources>
