@@ -15,6 +15,7 @@ import com.example.filipealves.carlinhospizza.dao.DAOUsuario;
 import com.example.filipealves.carlinhospizza.models.Produto;
 import com.example.filipealves.carlinhospizza.models.Usuario;
 import com.example.filipealves.carlinhospizza.retrofit.RetrofitConfig;
+
 import java.util.List;
 
 import Util.Util;
@@ -27,16 +28,14 @@ public class Splash extends AppCompatActivity {
     private static int SPLASH_TIME_OUT = 4000;
     public static List<Produto> PRODUTOS;
     private Usuario usuario = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
 
-
-
-
-        if(Util.verificaConexao(this)) {
+        if (Util.verificaConexao(this)) {
             Call<List<Produto>> call = new RetrofitConfig().getProdutosService().listProdutos();
             call.enqueue(new Callback<List<Produto>>() {
                 @Override
@@ -53,21 +52,25 @@ public class Splash extends AppCompatActivity {
                 @Override
                 public void run() {
                     Intent i;
-                    if (usuario == null){
-                        i  = new Intent(Splash.this, Login.class);
-                        DAOUsuario dao = new DAOUsuario(getApplicationContext());
-//                        Usuario usuario = new Usuario("felipe","felipe");
-//                        dao.insert(usuario);
-                        Log.d("",dao.select().get(0).toString());
-                     } else{
-                        i  = new Intent(Splash.this, MainActivity.class);
-                                          }
+                    DAOUsuario daoUsuario = DAOUsuario.getInstance(getApplicationContext());
+
+
+                    if (daoUsuario.select().size() == 0) {
+                        i = new Intent(Splash.this, Login.class);
+                    } else {
+                        i = new Intent(Splash.this, MainActivity.class);
+                    }
+
                     startActivity(i);
                     finish();
                 }
+
+
             }, SPLASH_TIME_OUT);
 
-        }else{
+        } else
+
+        {
             new AlertDialog.Builder(this)
                     .setTitle("Sem conexão")
                     .setMessage("Verifique sua conexão com a Internet e tente novamente...")
@@ -75,8 +78,8 @@ public class Splash extends AppCompatActivity {
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                   finish();
-                                   System.exit(0);
+                                    finish();
+                                    System.exit(0);
                                 }
 
                             }).show();
@@ -84,7 +87,6 @@ public class Splash extends AppCompatActivity {
 
 
     }
-
 
 
 }
