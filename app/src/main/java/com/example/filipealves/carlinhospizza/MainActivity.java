@@ -8,12 +8,15 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 import com.example.filipealves.carlinhospizza.adapter.PageAdapterPrincipal;
+import com.example.filipealves.carlinhospizza.dao.DAOUsuario;
 import com.example.filipealves.carlinhospizza.models.Pedido;
+import com.example.filipealves.carlinhospizza.models.Usuario;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private static ImageButton fabPedidos;
     public static Pedido pedido = new Pedido();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
                 getResources().getStringArray(R.array.titles_Secundaria_tab_2)));
 
         tabLayout.setupWithViewPager(viewPager);
+
+
+
+
+
     }
 
     @Override

@@ -6,9 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.filipealves.carlinhospizza.dao.DAOUsuario;
+import com.example.filipealves.carlinhospizza.models.Usuario;
+
 public class Login extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +23,7 @@ public class Login extends AppCompatActivity {
         final EditText login = findViewById(R.id.edit_txt_login);
         final EditText password = findViewById(R.id.edit_txt_password);
         final ImageButton bnt_login = findViewById(R.id.button_login);
+        final TextView tvCadastrar = findViewById(R.id.tvCadastrar);
 
         bnt_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,7 +31,19 @@ public class Login extends AppCompatActivity {
                 if (validarUsuario(login.getText().toString(), password.getText().toString())){
                     Intent i = new Intent(Login.this, MainActivity.class);
                     startActivity(i);
+                }else{
+                    Toast.makeText(getApplicationContext(), "Erro ao logar. Verifique o login e a  senha.", Toast.LENGTH_SHORT).show();
+                    login.setText("");
+                    password.setText("");
                 }
+            }
+        });
+
+        tvCadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login.this, activity_cadastrar.class);
+                startActivity(intent);
             }
         });
 
@@ -33,16 +51,14 @@ public class Login extends AppCompatActivity {
     }
 
     private boolean validarUsuario(String login, String senha){
-        if (login.equals("filipe")){
-            if (senha.equals("filipe")){
+        DAOUsuario  daoUsuario = new DAOUsuario(this);
+        Usuario usuario = daoUsuario.select_verificarLogin(login,senha);
+
+            if(usuario != null){
                 return true;
-            }else{
-                Toast.makeText(getApplicationContext(), "Senha incorreta", Toast.LENGTH_SHORT).show();
-                return false;
             }
-        }else{
-            Toast.makeText(getApplicationContext(), "Este usuário não existe", Toast.LENGTH_SHORT).show();
+
             return false;
+
         }
-    }
 }

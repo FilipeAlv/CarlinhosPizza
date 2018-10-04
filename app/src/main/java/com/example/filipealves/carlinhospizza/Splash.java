@@ -8,6 +8,10 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.example.filipealves.carlinhospizza.dao.DAOUsuario;
 import com.example.filipealves.carlinhospizza.models.Produto;
 import com.example.filipealves.carlinhospizza.models.Usuario;
 import com.example.filipealves.carlinhospizza.retrofit.RetrofitConfig;
@@ -27,6 +31,11 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+
+
+
+
         if(Util.verificaConexao(this)) {
             Call<List<Produto>> call = new RetrofitConfig().getProdutosService().listProdutos();
             call.enqueue(new Callback<List<Produto>>() {
@@ -46,9 +55,13 @@ public class Splash extends AppCompatActivity {
                     Intent i;
                     if (usuario == null){
                         i  = new Intent(Splash.this, Login.class);
+                        DAOUsuario dao = new DAOUsuario(getApplicationContext());
+//                        Usuario usuario = new Usuario("felipe","felipe");
+//                        dao.insert(usuario);
+                        Log.d("",dao.select().get(0).toString());
                      } else{
                         i  = new Intent(Splash.this, MainActivity.class);
-                    }
+                                          }
                     startActivity(i);
                     finish();
                 }
