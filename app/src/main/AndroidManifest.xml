@@ -30,7 +30,9 @@
             android:name=".meus_pedidos"
             android:label="@string/title_activity_meus_pedidos"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Login"></activity>
+        <activity android:name=".Login">
+
+        </activity>
 
         <activity android:name=".activity_cadastrar"
             android:label="Casdastrar Usuario"

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -22,11 +23,19 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getSupportActionBar().hide();
 
+<<<<<<< HEAD
+        final EditText login = findViewById(R.id.edit_txt_login);
+        final EditText password = findViewById(R.id.edit_txt_password);
+        final Button bnt_login = findViewById(R.id.button_login);
+        final Button btnCadastrar = findViewById(R.id.btn_Cadastrar);
+=======
         login = findViewById(R.id.edit_txt_login);
         password = findViewById(R.id.edit_txt_password);
         final ImageButton bnt_login = findViewById(R.id.button_login);
         final TextView tvCadastrar = findViewById(R.id.tvCadastrar);
+>>>>>>> c059e8076e85854fecb2bc8f30761db89360de45
 
         bnt_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +60,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        tvCadastrar.setOnClickListener(new View.OnClickListener() {
+        btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Login.this, activity_cadastrar.class);

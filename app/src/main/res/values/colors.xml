@@ -22,4 +22,8 @@
     <color name="fabPedidosAtivo">#fff200</color>
 
     <color name="colorLinkCadastro">#1e3ccf</color>
+
+    <color name="colorEditText">#6d6d70</color>
+    <color name="colorBackButton">#dbdce1</color>
+    <color name="colorEsqueceuSenha">#000000</color>
 </resources>
