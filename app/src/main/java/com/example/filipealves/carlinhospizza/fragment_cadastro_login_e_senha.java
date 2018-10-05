@@ -52,17 +52,6 @@ public class fragment_cadastro_login_e_senha extends Fragment {
             public void onClick(View view) {
                 //FAZER O QUE TEM QUE FAZER E LIMPAR OS CAMPOS
 
-                Usuario usuario = new Usuario(fragment_cadastro_login_e_senha.edLogin.getText().toString(),
-                        fragment_cadastro_login_e_senha.edSenha.getText().toString());
-
-                daoUsuario.deleteAll();
-                daoUsuario.insert(usuario);
-
-                Log.d("", daoUsuario.select().get(0).toString());
-
-                //
-                fragment_cadastro_login_e_senha.edLogin.setText("");
-                fragment_cadastro_login_e_senha.edSenha.setText("");
 
 
 

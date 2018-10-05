@@ -32,10 +32,11 @@ public class FragmentProdutos extends Fragment {
         if (bundle!= null){
             title = bundle.getString("title");
         }
-
-        for (Produto produto: Splash.PRODUTOS) {
-            if (produto.getCategoria().equals(title))
-                cardViewProdutosList.add(new CardViewProdutos(produto.getNome(), produto.getDescricao(), "R$" + produto.getValor(), R.drawable.img2));
+        if (Splash.PRODUTOS != null) {
+            for (Produto produto : Splash.PRODUTOS) {
+                if (produto.getCategoria().equals(title))
+                    cardViewProdutosList.add(new CardViewProdutos(produto.getNome(), produto.getDescricao(), "R$" + produto.getValor(), R.drawable.img2));
+            }
         }
         recyclerView = view.findViewById(R.id.recyclerViewProdutos);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));

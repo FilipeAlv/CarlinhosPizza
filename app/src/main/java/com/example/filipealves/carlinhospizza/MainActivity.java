@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private static ImageButton fabPedidos;
     public static Pedido pedido = new Pedido();
+    public  DAOUsuario daoUsuario = DAOUsuario.getInstance(this);
 
 
     @Override
@@ -76,7 +77,16 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        if(id == R.id.action_logOf){
+            if(Login.logado == true) {
+                daoUsuario.deleteAll();
 
+                Intent intent = new Intent(MainActivity.this, Login.class);
+                startActivity(intent);
+                finish();
+                Login.logado = false;
+            }
+        }
         return super.onOptionsItemSelected(item);
     }
 
