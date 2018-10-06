@@ -1,96 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context=".fragment_dados_usuario"
     >
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="@string/cadastro_2"
+        android:textAlignment="center"
+        android:textSize="30px"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:orientation="vertical"
         android:textAlignment="gravity">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <EditText
             android:id="@+id/edNomeRua"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_height="50dp"
+            android:layout_margin="15dp"
             android:layout_weight="1"
-            android:hint="Nome da rua" />
+            android:background="@drawable/estilo_edittext"
+            android:hint="Nome da rua"
+            android:padding="10dp" />
+
         <EditText
             android:id="@+id/edNumeroCasa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_margin="15dp"
             android:layout_weight="1"
-            android:hint="Número da casa" />
+            android:background="@drawable/estilo_edittext"
+            android:hint="N°"
+            android:padding="10dp" />
+    </LinearLayout>
 
         <EditText
             android:id="@+id/edBairro"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_height="50dp"
+            android:layout_margin="15dp"
             android:layout_weight="1"
-            android:hint="Bairro" />
+            android:background="@drawable/estilo_edittext"
+            android:hint="Bairro"
+            android:padding="10dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <EditText
             android:id="@+id/edCidade"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_height="50dp"
+            android:layout_margin="15dp"
             android:layout_weight="1"
-            android:hint="Cidade" />
+            android:background="@drawable/estilo_edittext"
+            android:hint="Cidade"
+            android:padding="10dp" />
+
+
 
         <EditText
-            android:id="@+id/edLograduouro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:hint="Logradouro" />
-        <EditText
             android:id="@+id/edCep"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_margin="15dp"
             android:layout_weight="1"
-            android:hint="CEP" />
+            android:background="@drawable/estilo_edittext"
+            android:hint="CEP"
+            android:padding="10dp" />
+    </LinearLayout>
+
         <EditText
             android:id="@+id/edPontoDeReferencia"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_height="50dp"
+            android:layout_margin="15dp"
             android:layout_weight="1"
-            android:hint="Ponto de referência" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btn_anteriorDadosUsuario"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Anterior"
-                android:layout_marginLeft="20dp"
-                />
-            <Button
-                android:id="@+id/btn_proximoTelefone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Próximo" />
-
-        </LinearLayout>
+            android:background="@drawable/estilo_edittext"
+            android:hint="Ponto de referência"
+            android:padding="10dp" />
+        <EditText
+            android:id="@+id/edLograduouro"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
 
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
 
+        <Button
+            android:id="@+id/btn_anteriorDadosUsuario"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/btn_anterior" />
 
+        <Button
+            android:id="@+id/btn_proximoTelefone"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/btn_anteriorDadosUsuario"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/btn_proximo" />
 
-</LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

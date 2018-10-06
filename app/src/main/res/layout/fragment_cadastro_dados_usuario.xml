@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,61 +7,82 @@
     tools:context=".fragment_dados_usuario"
     >
 
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp"
+        android:text="@string/cadastro_1"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="30px" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
         android:orientation="vertical"
         android:textAlignment="gravity">
 
         <EditText
             android:id="@+id/edNome"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_height="50dp"
+            android:layout_margin="15dp"
+            android:padding="10dp"
             android:layout_weight="1"
             android:hint="Nome"
-            android:inputType="text"/>
+            android:background="@drawable/estilo_edittext"
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/edCPF"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_height="50dp"
+            android:layout_margin="15dp"
+            android:padding="10dp"
             android:layout_weight="1"
+            android:background="@drawable/estilo_edittext"
             android:hint="CPF"
-            android:inputType="number"/>
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/edRG"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_height="50dp"
+            android:layout_margin="15dp"
             android:layout_weight="1"
+            android:padding="10dp"
+            android:background="@drawable/estilo_edittext"
             android:hint="RG"
-            android:inputType="number"/>
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/edData_nascimento"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_height="50dp"
+            android:layout_margin="15dp"
+            android:padding="10dp"
             android:layout_weight="1"
+            android:background="@drawable/estilo_edittext"
             android:hint="Data de nascimento"
-            android:inputType="date"/>
+            android:inputType="date" />
 
-        <Button
-            android:id="@+id/btn_ProximoEndereco"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Próximo"
-
-
-            />
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btn_ProximoEndereco"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="18dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/btn_proximo" />
 
 
-
-</LinearLayout>
+</RelativeLayout>

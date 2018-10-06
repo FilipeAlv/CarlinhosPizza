@@ -25,17 +25,11 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
 
-<<<<<<< HEAD
         final EditText login = findViewById(R.id.edit_txt_login);
         final EditText password = findViewById(R.id.edit_txt_password);
         final Button bnt_login = findViewById(R.id.button_login);
         final Button btnCadastrar = findViewById(R.id.btn_Cadastrar);
-=======
-        login = findViewById(R.id.edit_txt_login);
-        password = findViewById(R.id.edit_txt_password);
-        final ImageButton bnt_login = findViewById(R.id.button_login);
-        final TextView tvCadastrar = findViewById(R.id.tvCadastrar);
->>>>>>> c059e8076e85854fecb2bc8f30761db89360de45
+
 
         bnt_login.setOnClickListener(new View.OnClickListener() {
             @Override
