@@ -1,6 +1,8 @@
 package com.example.filipealves.carlinhospizza.retrofit;
 
 
+import com.example.filipealves.carlinhospizza.models.Cliente;
+import com.example.filipealves.carlinhospizza.service.ClienteService;
 import com.example.filipealves.carlinhospizza.service.ProdutosService;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -18,6 +20,10 @@ public class RetrofitConfig {
 
    public ProdutosService getProdutosService() {
       return this.retrofit.create(ProdutosService.class);
+   }
+
+   public ClienteService getClienteService() {
+      return this.retrofit.create(ClienteService.class);
    }
 
 }

@@ -22,89 +22,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:orientation="vertical"
-        android:textAlignment="gravity">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <EditText
-            android:id="@+id/edNomeRua"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:background="@drawable/estilo_edittext"
-            android:hint="Nome da rua"
-            android:padding="10dp" />
+        android:layout_marginTop="158dp">
 
-        <EditText
-            android:id="@+id/edNumeroCasa"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:background="@drawable/estilo_edittext"
-            android:hint="N°"
-            android:padding="10dp" />
+        <include layout="@layout/campos_endereco" />
     </LinearLayout>
-
-        <EditText
-            android:id="@+id/edBairro"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:background="@drawable/estilo_edittext"
-            android:hint="Bairro"
-            android:padding="10dp" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/edCidade"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:background="@drawable/estilo_edittext"
-            android:hint="Cidade"
-            android:padding="10dp" />
-
-
-
-        <EditText
-            android:id="@+id/edCep"
-            android:layout_width="280dp"
-            android:layout_height="50dp"
-            android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:background="@drawable/estilo_edittext"
-            android:hint="CEP"
-            android:padding="10dp" />
-    </LinearLayout>
-
-        <EditText
-            android:id="@+id/edPontoDeReferencia"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:background="@drawable/estilo_edittext"
-            android:hint="Ponto de referência"
-            android:padding="10dp" />
-        <EditText
-            android:id="@+id/edLograduouro"
-            android:layout_width="0dp"
-            android:layout_height="0dp" />
-
-
-    </LinearLayout>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -118,7 +41,7 @@
             android:layout_height="50dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="15dp"
             android:background="@drawable/btn_anterior" />
 
         <Button
@@ -127,7 +50,7 @@
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/btn_anteriorDadosUsuario"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="15dp"
             android:background="@drawable/btn_proximo" />
 
     </RelativeLayout>

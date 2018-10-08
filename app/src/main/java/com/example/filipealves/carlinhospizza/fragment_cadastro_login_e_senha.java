@@ -13,13 +13,24 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.filipealves.carlinhospizza.dao.DAOUsuario;
+import com.example.filipealves.carlinhospizza.models.Cliente;
+import com.example.filipealves.carlinhospizza.models.Produto;
 import com.example.filipealves.carlinhospizza.models.Usuario;
+import com.example.filipealves.carlinhospizza.retrofit.RetrofitConfig;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class fragment_cadastro_login_e_senha extends Fragment {
     Button btnCadastrar;
     Button btnAnteriorConfirmarCodigo;
-    static EditText edLogin, edSenha;
+    static EditText edLogin, edSenha, edConfSenha;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +48,7 @@ public class fragment_cadastro_login_e_senha extends Fragment {
 
         edLogin = (EditText)view.findViewById(R.id.edLogin);
         edSenha = (EditText) view.findViewById(R.id.edSenha);
+        edConfSenha = view.findViewById(R.id.edConfirmarSenha);
 
         final DAOUsuario daoUsuario = DAOUsuario.getInstance(getContext());
 
@@ -50,21 +62,57 @@ public class fragment_cadastro_login_e_senha extends Fragment {
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //FAZER O QUE TEM QUE FAZER E LIMPAR OS CAMPOS
+                if(
+                        edLogin.getText().length()==0||
+                        edSenha.getText().length()==0||
+                        edConfSenha.getText().length()==0){
+                    Toast.makeText(view.getContext(), "Verifique se todos os dados estão preenchidos corretamente", Toast.LENGTH_SHORT).show();
+                }else if (!edConfSenha.getText().toString().equals(edSenha.getText().toString())){
+                    Toast.makeText(view.getContext(), "As senhas inseridas não são iguais", Toast.LENGTH_SHORT).show();
 
+                }
+                    else{
+                    activity_cadastrar.CLIENTE.setLogin(edLogin.getText().toString());
+                    activity_cadastrar.CLIENTE.setPassword(edSenha.getText().toString());
+                    cadastrarCliente(activity_cadastrar.CLIENTE);
 
-
-
-                Toast.makeText(getContext(), "Usuário cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
-
-                getActivity().finish();
-
+                    getActivity().finish();
+                }
             }
         });
 
         return view;
     }
 
+    private void cadastrarCliente(final Cliente cliente){
+                        Call<String> call = new RetrofitConfig().getClienteService().insertUser(
+                        cliente.getEndereco().getRua(),
+                        cliente.getEndereco().getNumero(),
+                        cliente.getEndereco().getBairro(),
+                        cliente.getEndereco().getCidade(),
+                        cliente.getEndereco().getCep(),
+                        cliente.getEndereco().getPonto_referencia(),
+                        cliente.getNome(),
+                        cliente.getCpf(),
+                        cliente.getRg(),
+                        cliente.getData_nascimento(),
+                        cliente.getLogin(),
+                        cliente.getPassword(),
+                        cliente.getTelefone());
+                        call.enqueue(new Callback<String>() {
+                            @Override
+                            public void onResponse(Call<String> call, Response<String> response) {
+                                    Toast.makeText(getContext(),"Cadastro realizado com sucesso", Toast.LENGTH_SHORT).show();
+                            }
 
+                            @Override
+                            public void onFailure(Call<String> call, Throwable t) {
+
+                            }
+                        });
+
+
+
+    }
 
 }

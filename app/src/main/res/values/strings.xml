@@ -31,4 +31,22 @@
     <string name="cadastro_2">
         Agora vamos precisar do seu endereço para que não haja nenhum erro na entrega de seus pedidos.
     </string>
+
+    <string name="cadastro_3">
+        Informe um número de telefone para que possamos comprovar seu cadastro por meio de um código de confirmação.
+    </string>
+
+    <string name="cadastro_4">
+        Insira o código de confirmação que enviamos para o seu telefone.
+    </string>
+
+    <string name="cadastro_5">
+        Precisamos agora que você crie uma usuário e senha para acessar nosso aplicativo em qualquer dispositivo.
+    </string>
+
+    <string name="cidade">Cidade</string>
+
+    <string-array name="cidades_list">
+        <item>Belmonte</item>
+    </string-array>
 </resources>

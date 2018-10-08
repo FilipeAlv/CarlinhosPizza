@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class fragment_codigoDeConfirmacao extends Fragment {
@@ -40,7 +41,12 @@ public class fragment_codigoDeConfirmacao extends Fragment {
         btnProximoLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout_cadastro, new fragment_cadastro_login_e_senha()).commit();
+                if(
+                        edCodigoDeConfirmacao.getText().toString()==""){
+                    Toast.makeText(view.getContext(), "Verifique se todos os dados estão preenchidos", Toast.LENGTH_SHORT).show();
+                }else {
+                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout_cadastro, new fragment_cadastro_login_e_senha()).commit();
+                }
             }
         });
 
@@ -48,6 +54,7 @@ public class fragment_codigoDeConfirmacao extends Fragment {
         btnAnteriorTelefone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout_cadastro, new fragment_cadastro_telefone()).commit();
             }
         });

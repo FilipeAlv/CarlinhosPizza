@@ -1,44 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment_codigoDeConfirmacao">
 
-    <LinearLayout
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp"
+        android:text="@string/cadastro_4"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="30px" />
+
+    <EditText
+        android:id="@+id/edCodigoDeConfirmacao"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/estilo_edittext"
+        android:hint="Código de confirmação"
+        android:inputType="number"
+        android:padding="10dp" />
 
-        <EditText
-            android:id="@+id/edCodigoDeConfirmacao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:hint="Código de confirmação"
-            android:inputType="number"
-            />
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Anterior"
-                android:layout_marginLeft="20dp"
-                android:id="@+id/btn_antetiorTelefone"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="16dp">
 
-                />
+        <Button
+            android:id="@+id/btn_antetiorTelefone"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/btn_anterior" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Próximo"
-                android:id="@+id/btn_proximoLogin"
-                />
-
-        </LinearLayout>
-    </LinearLayout>
-
-</LinearLayout>
+        <Button
+            android:id="@+id/btn_proximoLogin"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/btn_proximo" />
+    </RelativeLayout>
+</RelativeLayout>

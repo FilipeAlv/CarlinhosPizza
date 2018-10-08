@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class fragment_dados_usuario extends Fragment {
@@ -34,7 +35,19 @@ public class fragment_dados_usuario extends Fragment {
         btnProximoEndereco.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               acaoProximoEndereco();
+               if(
+                       edNome.getText().length()==0||
+                       edCPF.getText().length()==0||
+                       edRG.getText().length()==0||
+                       edData_nascimento.getText().length()==0){
+                   Toast.makeText(view.getContext(), "Verifique se todos os dados estão preenchidos corretamente", Toast.LENGTH_SHORT).show();
+               }else {
+                   activity_cadastrar.CLIENTE.setNome(edNome.getText().toString());
+                   activity_cadastrar.CLIENTE.setCpf(edCPF.getText().toString());
+                   activity_cadastrar.CLIENTE.setRg(edRG.getText().toString());
+                   activity_cadastrar.CLIENTE.setData_nascimento(edData_nascimento.getText().toString());
+                   acaoProximoEndereco();
+               }
            }
        });
 

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.filipealves.carlinhospizza.models.Usuario;
 
@@ -13,7 +14,9 @@ import java.util.ArrayList;
 public class DAOUsuario {
     private SQLiteDatabase bd;
     private static  DAOUsuario daoUsuario;
+    Context contect;
     public DAOUsuario(Context ctx){
+        this.contect = ctx;
         BDCore bdAux = new BDCore(ctx);
         bd = bdAux.getWritableDatabase();
     }
