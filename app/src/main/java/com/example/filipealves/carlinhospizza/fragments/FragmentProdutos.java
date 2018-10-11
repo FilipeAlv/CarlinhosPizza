@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,10 +38,20 @@ public class FragmentProdutos extends Fragment {
         if (Splash.PRODUTOS != null) {
             for (Produto produto : Splash.PRODUTOS) {
                 if (produto.getCategoria().equals(title))
-                    cardViewProdutosList.add(new CardViewProdutos(produto.getNome(), produto.getDescricao(), "R$" + produto.getValor(), produto.getURLImagem()));
+                    //Pq ainda não tem img no banco
+                    produto.setURLImagem("http://i.imgur.com/DvpvklR.png");
+
+                    CardViewProdutos cardViewProdutos = new CardViewProdutos(produto.getNome(), produto.getDescricao(), "R$" + produto.getValor(), produto.getURLImagem());
+                    cardViewProdutos.setURLimagem(produto.getURLImagem());
+
+                    cardViewProdutosList.add(cardViewProdutos);
+
+
             }
 
         }
+
+
         recyclerView = view.findViewById(R.id.recyclerViewProdutos);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         recyclerView.setAdapter(new RecycleViewAdapter(getActivity(), cardViewProdutosList));

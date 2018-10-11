@@ -3,6 +3,7 @@ package com.example.filipealves.carlinhospizza.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,8 +48,8 @@ public class RecycleViewAdapter extends RecyclerView.Adapter <RecycleViewAdapter
             holder.tvDescricao.setText(mCardViewProdutosList.get(position).getDescricao());
             holder.tvValor.setText(mCardViewProdutosList.get(position).getValor());
 
-            //Carregar as imagens -> Util.carregarImagem(holder.imgProduto, mCardViewProdutosList.get(position).getURLImagem());
-            Util.carregarImagem(holder.imgProduto,"http://i.imgur.com/DvpvklR.png");
+            Util.carregarImagem(holder.imgProduto, mCardViewProdutosList.get(position).getURLImagem());
+
             holder.fab.setOnClickListener( new Controller(MainActivity.pedido, holder, position, mCardViewProdutosList));
             holder.imgProduto.setOnClickListener( new Controller(MainActivity.pedido, holder, position, mCardViewProdutosList));
             HOLDERS.add(holder);

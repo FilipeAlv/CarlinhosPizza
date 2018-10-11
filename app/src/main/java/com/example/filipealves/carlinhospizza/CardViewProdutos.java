@@ -14,12 +14,15 @@ public class CardViewProdutos {
 
 
     public String getURLImagem(){
-         return URLimagem;
+         return this.URLimagem;
      }
 
      public void setURLimagem(String URLimagem){
          this.URLimagem = URLimagem;
      }
+
+
+
     public String getNome() {
         return nome;
     }

@@ -18,7 +18,7 @@ public class Produto {
     public String getCategoria(){ return categoria; }
 
     public String getURLImagem() {
-        return URLImagem;
+        return this.URLImagem;
     }
 
     public void setURLImagem(String URLImagem) {
