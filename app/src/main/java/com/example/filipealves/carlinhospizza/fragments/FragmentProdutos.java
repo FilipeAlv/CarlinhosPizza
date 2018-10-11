@@ -37,7 +37,7 @@ public class FragmentProdutos extends Fragment {
         if (Splash.PRODUTOS != null) {
             for (Produto produto : Splash.PRODUTOS) {
                 if (produto.getCategoria().equals(title))
-                    cardViewProdutosList.add(new CardViewProdutos(produto.getNome(), produto.getDescricao(), "R$" + produto.getValor(), R.drawable.img2));
+                    cardViewProdutosList.add(new CardViewProdutos(produto.getNome(), produto.getDescricao(), "R$" + produto.getValor(), produto.getURLImagem()));
             }
 
         }

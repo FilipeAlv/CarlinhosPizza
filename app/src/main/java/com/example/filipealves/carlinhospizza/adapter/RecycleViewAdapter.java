@@ -18,6 +18,8 @@ import com.example.filipealves.carlinhospizza.controller.Controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import Util.Util;
+
 
 public class RecycleViewAdapter extends RecyclerView.Adapter <RecycleViewAdapter.MyViewHolder>{
 
@@ -44,7 +46,9 @@ public class RecycleViewAdapter extends RecyclerView.Adapter <RecycleViewAdapter
             holder.tvNome.setText(mCardViewProdutosList.get(position).getNome());
             holder.tvDescricao.setText(mCardViewProdutosList.get(position).getDescricao());
             holder.tvValor.setText(mCardViewProdutosList.get(position).getValor());
-            holder.imgProduto.setImageResource(mCardViewProdutosList.get(position).getImagem());
+
+            //Carregar as imagens -> Util.carregarImagem(holder.imgProduto, mCardViewProdutosList.get(position).getURLImagem());
+            Util.carregarImagem(holder.imgProduto,"http://i.imgur.com/DvpvklR.png");
             holder.fab.setOnClickListener( new Controller(MainActivity.pedido, holder, position, mCardViewProdutosList));
             holder.imgProduto.setOnClickListener( new Controller(MainActivity.pedido, holder, position, mCardViewProdutosList));
             HOLDERS.add(holder);

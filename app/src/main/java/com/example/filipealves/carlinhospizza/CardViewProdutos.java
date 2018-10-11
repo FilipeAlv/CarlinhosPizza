@@ -2,23 +2,23 @@ package com.example.filipealves.carlinhospizza;
 
 public class CardViewProdutos {
      private String nome, descricao, valor;
-     private int imagem;
+     private String URLimagem;
 
-     public CardViewProdutos(String nome, String descricao, String valor, int imagem){
+     public CardViewProdutos(String nome, String descricao, String valor, String URLImagem){
          this.nome=nome;
          this.descricao=descricao;
          this.valor=valor;
-         this.imagem =imagem;
+         this.URLimagem = URLimagem;
 
      }
 
 
-    public int getImagem(){
-         return imagem;
+    public String getURLImagem(){
+         return URLimagem;
      }
 
-     public void setImagem(int imagem){
-         this.imagem=imagem;
+     public void setURLimagem(String URLimagem){
+         this.URLimagem = URLimagem;
      }
     public String getNome() {
         return nome;
