@@ -40,8 +40,9 @@ public class FragmentProdutos extends Fragment {
             for (Produto produto : Splash.PRODUTOS) {
                 if (produto.getCategoria().equals(title)) {
                     CardViewProdutos cardViewProdutos = new CardViewProdutos(produto.getNome(), produto.getDescricao(), "R$" + produto.getValor(), produto.getURLImagem());
+                    cardViewProdutos.setURLimagem(produto.getURLImagem());
                     cardViewProdutosList.add(cardViewProdutos);
-                    Toast.makeText(getContext(),produto.getURLImagem(), Toast.LENGTH_SHORT).show();
+
                 }
 
             }
