@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.filipealves.carlinhospizza.CardViewProdutos;
 import com.example.filipealves.carlinhospizza.R;
@@ -37,15 +38,11 @@ public class FragmentProdutos extends Fragment {
 
         if (Splash.PRODUTOS != null) {
             for (Produto produto : Splash.PRODUTOS) {
-                if (produto.getCategoria().equals(title))
-                    //Pq ainda não tem img no banco
-                    produto.setURLImagem("http://i.imgur.com/DvpvklR.png");
-
+                if (produto.getCategoria().equals(title)) {
                     CardViewProdutos cardViewProdutos = new CardViewProdutos(produto.getNome(), produto.getDescricao(), "R$" + produto.getValor(), produto.getURLImagem());
-                    cardViewProdutos.setURLimagem(produto.getURLImagem());
-
                     cardViewProdutosList.add(cardViewProdutos);
-
+                    Toast.makeText(getContext(),produto.getURLImagem(), Toast.LENGTH_SHORT).show();
+                }
 
             }
 

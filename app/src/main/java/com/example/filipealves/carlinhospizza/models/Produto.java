@@ -2,7 +2,7 @@ package com.example.filipealves.carlinhospizza.models;
 
 public class Produto {
     int id;
-    String nome, descricao, valor, status, tipo, categoria, URLImagem;
+    String nome, descricao, valor, status, tipo, categoria, imagem;
 
     public String getNome(){
         return  nome;
@@ -18,11 +18,11 @@ public class Produto {
     public String getCategoria(){ return categoria; }
 
     public String getURLImagem() {
-        return this.URLImagem;
+        return this.imagem;
     }
 
     public void setURLImagem(String URLImagem) {
-        this.URLImagem = URLImagem;
+        this.imagem = URLImagem;
 
     }
 
