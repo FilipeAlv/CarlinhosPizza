@@ -18,6 +18,7 @@ public class Login extends AppCompatActivity {
     DAOUsuario daoUsuario = DAOUsuario.getInstance(this);
     static EditText login;
     static EditText password;
+    static TextView tv_esqueceu_senha;
     static boolean logado;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,17 @@ public class Login extends AppCompatActivity {
         final EditText password = findViewById(R.id.edit_txt_password);
         final Button bnt_login = findViewById(R.id.button_login);
         final Button btnCadastrar = findViewById(R.id.btn_Cadastrar);
+
+        tv_esqueceu_senha = (TextView)findViewById(R.id.txt_esqueceu_senha);
+
+        tv_esqueceu_senha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login.this, activity_esqueci_Minha_Senha.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         bnt_login.setOnClickListener(new View.OnClickListener() {

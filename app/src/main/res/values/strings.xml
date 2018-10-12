@@ -49,4 +49,5 @@
     <string-array name="cidades_list">
         <item>Belmonte</item>
     </string-array>
+    <string name="title_activity_esqueci__minha__senha">activity_esqueci_minha_senha</string>
 </resources>
