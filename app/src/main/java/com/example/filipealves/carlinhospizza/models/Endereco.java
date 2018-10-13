@@ -2,8 +2,9 @@ package com.example.filipealves.carlinhospizza.models;
 
 public class Endereco {
     String rua, numero, bairro, cidade, cep, ponto_referencia;
-
-    public Endereco(String rua, String numero, String bairro, String cidade, String cep, String ponto_referencia) {
+    int id;
+    public Endereco(int id, String rua, String numero, String bairro, String cidade, String cep, String ponto_referencia) {
+        this.id = id;
         this.rua = rua;
         this.numero = numero;
         this.bairro = bairro;
@@ -61,5 +62,13 @@ public class Endereco {
 
     public void setPonto_referencia(String ponto_referencia) {
         this.ponto_referencia = ponto_referencia;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

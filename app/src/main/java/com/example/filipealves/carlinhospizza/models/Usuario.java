@@ -3,7 +3,7 @@ package com.example.filipealves.carlinhospizza.models;
 public class Usuario {
     private String login;
     private String password;
-    private long id;
+    private int id;
 
     public Usuario(String login, String password) {
         this.login = login;
@@ -26,11 +26,11 @@ public class Usuario {
         this.password = password;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
