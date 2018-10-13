@@ -19,6 +19,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/estilo_edittext"
                 android:hint="Nome da rua"
+                android:digits="abcdefghijlmnopqrstuvxzwyçQWERTYUIOPASDFGHJKLÇZXVCBNM^´ "
                 android:padding="10dp" />
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,6 +33,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/estilo_edittext"
                 android:hint="Bairro"
+                android:digits="abcdefghijlmnopqrstuvxzwyçQWERTYUIOPASDFGHJKLÇZXVCBNM^´ "
                 android:padding="10dp" />
 
             <EditText
@@ -83,7 +85,8 @@
             android:layout_weight="1"
             android:background="@drawable/estilo_edittext"
             android:hint="Ponto de referência"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:inputType="text"/>
         <EditText
             android:id="@+id/edLograduouro"
             android:layout_width="0dp"

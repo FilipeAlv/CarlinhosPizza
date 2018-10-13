@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.example.filipealves.carlinhospizza.models.Endereco;
 
+import Util.Util;
+
 
 public class fragment_cadastro_endereco extends Fragment {
     Button btnAnteriorDadosUsuario;
@@ -45,8 +47,15 @@ public class fragment_cadastro_endereco extends Fragment {
         edNumero = (EditText)view.findViewById(R.id.edNumeroCasa);
         edPontoDeReferencia = (EditText)view.findViewById(R.id.edPontoDeReferencia);
 
+
+        Util.mascararEditText("NNNNN-NNN", edCep);
+
         btnAnteriorDadosUsuario =  (Button)view.findViewById(R.id.btn_anteriorDadosUsuario);
         btnProximoTelefone =  (Button)view.findViewById(R.id.btn_proximoTelefone);
+
+
+
+
 
 
         btnAnteriorDadosUsuario.setOnClickListener(new View.OnClickListener() {

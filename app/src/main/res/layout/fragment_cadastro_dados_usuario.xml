@@ -36,6 +36,7 @@
             android:layout_weight="1"
             android:hint="Nome"
             android:background="@drawable/estilo_edittext"
+            android:digits="abcdefghijlmnopqrstuvxzwyçQWERTYUIOPASDFGHJKLÇZXVCBNM^´ "
             android:inputType="text" />
 
         <EditText
@@ -58,7 +59,7 @@
             android:padding="10dp"
             android:background="@drawable/estilo_edittext"
             android:hint="RG"
-            android:inputType="number" />
+            android:inputType="numberDecimal" />
 
         <EditText
             android:id="@+id/edData_nascimento"

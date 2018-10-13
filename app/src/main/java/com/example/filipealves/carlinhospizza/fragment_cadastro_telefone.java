@@ -1,7 +1,5 @@
 package com.example.filipealves.carlinhospizza;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,14 +9,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.filipealves.carlinhospizza.models.Endereco;
+import Util.Util;
 
 
 public class fragment_cadastro_telefone extends Fragment {
 
     Button btnProximoCodigoDeConfirmacao;
     Button btnAnteriorEndereco;
-    static EditText edNumeroTelefone;
+    static EditText etNumeroTelefone;
 
     public fragment_cadastro_telefone() {
         // Required empty public constructor
@@ -39,7 +37,12 @@ public class fragment_cadastro_telefone extends Fragment {
 
         btnProximoCodigoDeConfirmacao = (Button)view.findViewById(R.id.btn_proximoConfirmarCodigo);
 
-        edNumeroTelefone = (EditText)view.findViewById(R.id.edTelefone);
+        etNumeroTelefone = (EditText)view.findViewById(R.id.edTelefone);
+
+
+        Util.mascararEditText("(NNN)NNNNN-NNNN", etNumeroTelefone);
+
+
 
         btnAnteriorEndereco.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,11 +53,10 @@ public class fragment_cadastro_telefone extends Fragment {
         btnProximoCodigoDeConfirmacao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(
-                        edNumeroTelefone.getText().length()==0){
+                if(etNumeroTelefone.getText().length()==0){
                     Toast.makeText(view.getContext(), "Seu número de telefone é importante para o cadastro.", Toast.LENGTH_SHORT).show();
                 }else {
-                    activity_cadastrar.CLIENTE.setTelefone(edNumeroTelefone.getText().toString());
+                    activity_cadastrar.CLIENTE.setTelefone(etNumeroTelefone.getText().toString());
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout_cadastro, new fragment_codigoDeConfirmacao()).commit();
                 }
 

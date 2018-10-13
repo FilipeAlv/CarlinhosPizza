@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import Util.Util;
+
 
 public class fragment_dados_usuario extends Fragment {
     Button btnProximoEndereco;
@@ -32,6 +34,10 @@ public class fragment_dados_usuario extends Fragment {
         edData_nascimento = (EditText)view.findViewById(R.id.edData_nascimento);
 
 
+        Util.mascararEditText("NNN.NNN.NNN-NN", edCPF);
+        Util.mascararEditText("NN/NN/NN", edData_nascimento);
+
+
         btnProximoEndereco.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
@@ -39,8 +45,9 @@ public class fragment_dados_usuario extends Fragment {
                        edNome.getText().length()==0||
                        edCPF.getText().length()==0||
                        edRG.getText().length()==0||
-                       edData_nascimento.getText().length()==0){
-                   Toast.makeText(view.getContext(), "Verifique se todos os dados estão preenchidos corretamente", Toast.LENGTH_SHORT).show();
+                       edData_nascimento.getText().length()==0 || !Util.isCPF(edCPF.getText().toString())){
+                   Toast.makeText(view.getContext(), "Verifique se todos os dados estão preenchidos " +
+                           "corretamente. Certifique-se que o seu CPF é válido.", Toast.LENGTH_LONG).show();
                }else {
                    activity_cadastrar.CLIENTE.setNome(edNome.getText().toString());
                    activity_cadastrar.CLIENTE.setCpf(edCPF.getText().toString());
