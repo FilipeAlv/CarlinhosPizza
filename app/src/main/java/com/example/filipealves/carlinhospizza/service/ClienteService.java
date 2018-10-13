@@ -33,6 +33,10 @@ public interface ClienteService {
                 @Query("senha") String senha,
                 @Query("telefone") String telefone
         );
+
         @GET("app/listar_endereco_login.php")
         Call<Endereco> buscarEndereco(@Query("login") String login );
+
+        @GET("app/listar_cliente_login.php")
+        Call<Cliente> buscarCliente(@Query("login") String login );
 }

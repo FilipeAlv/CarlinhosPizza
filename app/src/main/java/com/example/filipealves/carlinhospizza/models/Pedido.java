@@ -6,12 +6,14 @@ import java.util.Date;
 public class Pedido {
     private int id;
     private String status;
-    private Date data;
+    private String descricao;
+    private String data;
     private int cliente_id;
-    private String tipoPagamento;
+    private int endereco_id;
+    private String forma_pagamento;
     private String troco;
     private ArrayList<Produto> produtos = new ArrayList<>();
-    private double valorTotal;
+    private String valor;
 
 
     public ArrayList<Produto>  getProdutos(){
@@ -38,12 +40,16 @@ public class Pedido {
         this.status = status;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
     }
 
     public int getCliente_id() {
@@ -54,12 +60,20 @@ public class Pedido {
         this.cliente_id = cliente_id;
     }
 
-    public String getTipoPagamento() {
-        return tipoPagamento;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setTipoPagamento(String tipoPagamento) {
-        this.tipoPagamento = tipoPagamento;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getForma_pagamento() {
+        return forma_pagamento;
+    }
+
+    public void setForma_pagamento(String forma_pagamento) {
+        this.forma_pagamento = forma_pagamento;
     }
 
     public String getTroco() {
@@ -70,12 +84,16 @@ public class Pedido {
         this.troco = troco;
     }
 
-    public double getValorTotal() {
-        return valorTotal;
+    public String getValor() {
+        return valor;
     }
 
-    public void setValorTotal(double valorTotal) {
-        this.valorTotal = valorTotal;
+    public int getEndereco_id() {
+        return endereco_id;
+    }
+
+    public void setEndereco_id(int endereco_id) {
+        this.endereco_id = endereco_id;
     }
 }
 
