@@ -53,6 +53,10 @@ public class Produto {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
+
+    public int getId() {
+        return id;
+    }
 }
 
 

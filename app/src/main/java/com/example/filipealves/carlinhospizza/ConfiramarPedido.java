@@ -13,8 +13,11 @@ import android.widget.Toast;
 
 import com.example.filipealves.carlinhospizza.dao.DAOUsuario;
 import com.example.filipealves.carlinhospizza.models.Cliente;
+import com.example.filipealves.carlinhospizza.models.ClienteRet;
 import com.example.filipealves.carlinhospizza.models.Endereco;
 import com.example.filipealves.carlinhospizza.models.Pedido;
+import com.example.filipealves.carlinhospizza.models.PedidoRet;
+import com.example.filipealves.carlinhospizza.models.Produto;
 import com.example.filipealves.carlinhospizza.models.Usuario;
 import com.example.filipealves.carlinhospizza.retrofit.RetrofitConfig;
 
@@ -35,7 +38,7 @@ public class ConfiramarPedido extends AppCompatActivity {
     private Endereco endereco;
     private Usuario usuario;
     private int cliente_id;
-    private Pedido pedidoCadastrado;
+    private PedidoRet pedidoCadastrado;
     private String formaPagamento="";
 
     @Override
@@ -102,31 +105,29 @@ public class ConfiramarPedido extends AppCompatActivity {
         finalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"passou aqui",Toast.LENGTH_SHORT).show();
-                Call<Cliente> call = new RetrofitConfig().getClienteService().buscarCliente(usuario.getLogin());
-                /*call.enqueue(new Callback<Cliente>() {
+
+                Call<ClienteRet> call = new RetrofitConfig().getClienteService().buscarCliente(usuario.getLogin());
+                call.enqueue(new Callback<ClienteRet>() {
                     @Override
-                    public void onResponse(Call<Cliente> call, Response<Cliente> response) {
-                        Cliente cliente = response.body();
+                    public void onResponse(Call<ClienteRet> call, Response<ClienteRet> response) {
+                        ClienteRet cliente = response.body();
                         cliente_id = cliente.getId();
+                        Pedido pedido = new Pedido();
+                        pedido.setDescricao("");
+                        pedido.setValor(edValor.getText().toString());
+                        pedido.setForma_pagamento(formaPagamento);
+                        pedido.setCliente_id(cliente_id);
+                        pedido.setTroco(edTroco.getText().toString());
+                        pedido.setEndereco_id(endereco.getId());
 
+                        cadastrarPedido(pedido);
                     }
 
                     @Override
-                    public void onFailure(Call<Cliente> call, Throwable t) {
+                    public void onFailure(Call<ClienteRet> call, Throwable t) {
 
                     }
-                });*/
-                Pedido pedido = new Pedido();
-                pedido.setDescricao("");
-                pedido.setValor(edValor.getText().toString());
-                pedido.setForma_pagamento(formaPagamento);
-                pedido.setCliente_id(cliente_id);
-                pedido.setEndereco_id(endereco.getId());
-
-                cadastrarPedido(pedido);
-
-
+                });
 
             }
         });
@@ -147,34 +148,82 @@ public class ConfiramarPedido extends AppCompatActivity {
 
     private void cadastrarPedido(final Pedido pedido){
         if (
-                edNomeRua.getText().equals(endereco.getRua())||
-        edBairro.getText().equals(endereco.getBairro())||
-        edNumero.getText().equals(endereco.getNumero())||
-        edCidade.getSelectedItem().equals(getPosition(endereco.getCidade()))||
-        edCep.getText().equals(endereco.getCep())||
-        edPontoDeReferencia.getText().equals(endereco.getPonto_referencia())) {
+                edNomeRua.getText().toString().equals(endereco.getRua())&&
+                edBairro.getText().toString().equals(endereco.getBairro())&&
+                edNumero.getText().toString().equals(endereco.getNumero())&&
+                edCidade.getSelectedItemId()==getPosition(endereco.getCidade())&&
+                edCep.getText().toString().equals(endereco.getCep())&&
+                edPontoDeReferencia.getText().toString().equals(endereco.getPonto_referencia())) {
 
 
 
-            Call<Pedido> call1 = new RetrofitConfig().getPedidoService().insertPedido(
+            Call<PedidoRet> call1 = new RetrofitConfig().getPedidoService().insertPedido(
                     pedido.getDescricao(),
                     pedido.getValor(),
                     pedido.getForma_pagamento(),
                     pedido.getTroco(),
                     pedido.getCliente_id(),
                     pedido.getEndereco_id());
-            call1.enqueue(new Callback<Pedido>() {
+
+                call1.enqueue(new Callback<PedidoRet>() {
                 @Override
-                public void onResponse(Call<Pedido> call, Response<Pedido> response) {
+                public void onResponse(Call<PedidoRet> call, Response<PedidoRet> response) {
                     pedidoCadastrado = response.body();
+
                 }
 
                 @Override
-                public void onFailure(Call<Pedido> call, Throwable t) {
+                public void onFailure(Call<PedidoRet> call, Throwable t) {
+
+                }
+            });
+        }else{
+            Call<PedidoRet> call1 = new RetrofitConfig().getPedidoService().insertPedidoEndereco(
+                    pedido.getDescricao(),
+                    pedido.getValor(),
+                    pedido.getForma_pagamento(),
+                    pedido.getTroco(),
+                    pedido.getCliente_id(),
+                    edNomeRua.getText().toString(),
+                    edNumero.getText().toString(),
+                    edBairro.getText().toString(),
+                    edCidade.getSelectedItem().toString(),
+                    edCep.getText().toString(),
+                    edPontoDeReferencia.getText().toString());
+
+            call1.enqueue(new Callback<PedidoRet>() {
+                @Override
+                public void onResponse(Call<PedidoRet> call, Response<PedidoRet> response) {
+                    pedidoCadastrado = response.body();
+
+                }
+
+                @Override
+                public void onFailure(Call<PedidoRet> call, Throwable t) {
 
                 }
             });
         }
+
+        for (Produto produto : MainActivity.pedido.getProdutos()) {
+            Toast.makeText(getApplicationContext(), ""+produto.getId(),Toast.LENGTH_SHORT).show();
+            Call<PedidoRet> call2 = new RetrofitConfig().getPedidoService().insertPedidoProduto(
+                    pedidoCadastrado.getId(),
+                    produto.getId());
+
+            call2.enqueue(new Callback<PedidoRet>() {
+                @Override
+                public void onResponse(Call<PedidoRet> call, Response<PedidoRet> response) {
+                    PedidoRet pedido = response.body();
+                }
+
+                @Override
+                public void onFailure(Call<PedidoRet> call, Throwable t) {
+
+                }
+            });
+        }
+
 
     }
 }

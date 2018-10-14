@@ -1,9 +1,9 @@
 package com.example.filipealves.carlinhospizza.models;
 
 public class Cliente extends Usuario{
-    private int id;
-    private String nome, cpf, rg, data_nascimento, telefone;
-    private Endereco endereco;
+    int id;
+    String nome, cpf, rg, data_nascimento, telefone;
+    Endereco endereco;
     public Cliente (String login, String senha ){
         super(login, senha);
     }

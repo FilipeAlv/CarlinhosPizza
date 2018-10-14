@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Pedido {
-    private int id;
-    private String status;
-    private String descricao;
-    private String data;
-    private int cliente_id;
-    private int endereco_id;
-    private String forma_pagamento;
-    private String troco;
-    private ArrayList<Produto> produtos = new ArrayList<>();
-    private String valor;
+     int id;
+     String status;
+     String descricao;
+     String data;
+     int cliente_id;
+     int endereco_id;
+     String forma_pagamento;
+     String troco;
+     private ArrayList<Produto> produtos = new ArrayList<>();
+     String valor;
 
 
     public ArrayList<Produto>  getProdutos(){

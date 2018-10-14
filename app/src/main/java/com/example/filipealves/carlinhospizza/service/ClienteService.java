@@ -1,6 +1,7 @@
 package com.example.filipealves.carlinhospizza.service;
 
 import com.example.filipealves.carlinhospizza.models.Cliente;
+import com.example.filipealves.carlinhospizza.models.ClienteRet;
 import com.example.filipealves.carlinhospizza.models.Endereco;
 import com.example.filipealves.carlinhospizza.models.Produto;
 
@@ -38,5 +39,5 @@ public interface ClienteService {
         Call<Endereco> buscarEndereco(@Query("login") String login );
 
         @GET("app/listar_cliente_login.php")
-        Call<Cliente> buscarCliente(@Query("login") String login );
+        Call<ClienteRet> buscarCliente(@Query("login") String login );
 }
