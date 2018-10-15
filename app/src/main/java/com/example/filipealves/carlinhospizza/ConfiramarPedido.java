@@ -38,7 +38,8 @@ public class ConfiramarPedido extends AppCompatActivity {
     private Endereco endereco;
     private Usuario usuario;
     private int cliente_id;
-    private PedidoRet pedidoCadastrado;
+    private PedidoRet pedidoCadastrado=new PedidoRet();
+    int pedido_id;
     private String formaPagamento="";
 
     @Override
@@ -169,6 +170,7 @@ public class ConfiramarPedido extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<PedidoRet> call, Response<PedidoRet> response) {
                     pedidoCadastrado = response.body();
+                    adicionarProdutos(pedidoCadastrado.getId());
 
                 }
 
@@ -195,6 +197,7 @@ public class ConfiramarPedido extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<PedidoRet> call, Response<PedidoRet> response) {
                     pedidoCadastrado = response.body();
+                    adicionarProdutos(pedidoCadastrado.getId());
 
                 }
 
@@ -205,16 +208,24 @@ public class ConfiramarPedido extends AppCompatActivity {
             });
         }
 
+
+
+
+    }
+
+    private void adicionarProdutos(int pedido){
+
         for (Produto produto : MainActivity.pedido.getProdutos()) {
-            Toast.makeText(getApplicationContext(), ""+produto.getId(),Toast.LENGTH_SHORT).show();
-            Call<PedidoRet> call2 = new RetrofitConfig().getPedidoService().insertPedidoProduto(
-                    pedidoCadastrado.getId(),
-                    produto.getId());
+           Call<PedidoRet> call2 = new RetrofitConfig().getPedidoService().insertPedidoProduto(
+                    pedido,
+                    produto.getId(),
+                    produto.getQuantidade(),
+                   "");
 
             call2.enqueue(new Callback<PedidoRet>() {
                 @Override
                 public void onResponse(Call<PedidoRet> call, Response<PedidoRet> response) {
-                    PedidoRet pedido = response.body();
+                    PedidoRet pedidoR = response.body();
                 }
 
                 @Override
@@ -223,7 +234,5 @@ public class ConfiramarPedido extends AppCompatActivity {
                 }
             });
         }
-
-
     }
 }

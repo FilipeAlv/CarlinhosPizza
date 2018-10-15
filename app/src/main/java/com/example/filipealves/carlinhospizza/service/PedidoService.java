@@ -40,7 +40,10 @@ public interface PedidoService {
         @GET("app/cadastro_pedido_produto.php")
         Call<PedidoRet> insertPedidoProduto(
                 @Query("pedido_id") int pedido_id,
-                @Query("produto_id") int produto_id
+                @Query("produto_id") int produto_id,
+                @Query("quantidade") int quantidade,
+                @Query("observacao") String observacao
+
 
         );
 

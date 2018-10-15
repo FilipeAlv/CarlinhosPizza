@@ -2,7 +2,8 @@ package com.example.filipealves.carlinhospizza.models;
 
 public class Produto {
     int id;
-    String nome, descricao, valor, status, tipo, categoria, imagem;
+    String nome, descricao, valor, status, tipo, categoria, imagem, observacao;
+    int quantidade;
 
     public String getNome(){
         return  nome;
@@ -56,6 +57,30 @@ public class Produto {
 
     public int getId() {
         return id;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 }
 

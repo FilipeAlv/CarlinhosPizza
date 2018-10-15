@@ -88,6 +88,7 @@ public class listAdapter extends ArrayAdapter<Produto> {
                             .show();
                 }else{
                     quant--;
+                    elementos.get(position).setQuantidade(quant);
                     holderList.qnt_text.setText(""+quant);
                     valorT-= Double.parseDouble(elementos.get(position).getValor());
                     valorTotal.setText("R$" + valorT + "0");
@@ -100,6 +101,7 @@ public class listAdapter extends ArrayAdapter<Produto> {
             public void onClick(View view) {
                 int quant = Integer.parseInt(holderList.qnt_text.getText().toString());
                     quant++;
+                    elementos.get(position).setQuantidade(quant);
                     holderList.qnt_text.setText(""+quant);
                     valorT+= Double.parseDouble(elementos.get(position).getValor());
                     valorTotal.setText("R$" + valorT + "0");

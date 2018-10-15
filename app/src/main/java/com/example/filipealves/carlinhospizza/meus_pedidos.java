@@ -38,6 +38,7 @@ public class meus_pedidos extends AppCompatActivity {
 
             for (Produto produto: MainActivity.pedido.getProdutos()) {
                 valorT+=Double.parseDouble(produto.getValor());
+                produto.setQuantidade(1);
             }
 
             TextView valorTotal = findViewById(R.id.listValorTotal);
