@@ -27,7 +27,7 @@ public class meus_pedidos extends AppCompatActivity {
         confirmarPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(meus_pedidos.this, ConfiramarPedido.class);
+                Intent intent = new Intent(meus_pedidos.this, ConfirmarPedido.class);
                 startActivity(intent);
             }
         });

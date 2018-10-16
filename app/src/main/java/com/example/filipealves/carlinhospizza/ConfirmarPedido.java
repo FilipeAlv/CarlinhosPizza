@@ -28,7 +28,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class ConfiramarPedido extends AppCompatActivity {
+public class ConfirmarPedido extends AppCompatActivity {
     private EditText edNomeRua;
     private EditText edBairro;
     private Spinner edCidade;

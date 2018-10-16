@@ -36,7 +36,7 @@
             android:name=".activity_cadastrar"
             android:label="Casdastrar Usuario"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ConfiramarPedido" />
+        <activity android:name=".ConfirmarPedido" />
         <activity
             android:name=".activity_esqueci_Minha_Senha"
             android:label="@string/title_activity_esqueci__minha__senha"

@@ -17,6 +17,8 @@ import com.example.filipealves.carlinhospizza.R;
 import com.example.filipealves.carlinhospizza.models.Produto;
 import java.util.ArrayList;
 
+import Util.Util;
+
 public class listAdapter extends ArrayAdapter<Produto> {
     private final Context context;
     private final ArrayList<Produto> elementos;
@@ -39,6 +41,7 @@ public class listAdapter extends ArrayAdapter<Produto> {
         View view = inflater.inflate(R.layout.listview_model, parent, false);
 
         ImageView imageProduto = view.findViewById(R.id.listImageProduto);
+        Util.carregarImagem(imageProduto, elementos.get(position).getURLImagem());
         final TextView nomeProduto = view.findViewById(R.id.listNomeProduto);
         final TextView valorProduto = view.findViewById(R.id.listValorProduto);
         final ImageButton iconDelete = view.findViewById(R.id.listIconDelete);
