@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.filipealves.carlinhospizza.CardViewProdutos;
 import com.example.filipealves.carlinhospizza.R;
 import com.example.filipealves.carlinhospizza.Splash;
+import com.example.filipealves.carlinhospizza.adapter.PageAdapterPrincipal;
 import com.example.filipealves.carlinhospizza.adapter.RecycleViewAdapter;
 import com.example.filipealves.carlinhospizza.models.Produto;
 import java.util.ArrayList;
@@ -51,6 +52,8 @@ public class FragmentProdutos extends Fragment {
 
             }
 
+        }else{
+            Toast.makeText(getContext(), "ERRO NO SERVIDOR!", Toast.LENGTH_LONG).show();
         }
 
 

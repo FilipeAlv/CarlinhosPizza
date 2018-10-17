@@ -54,7 +54,6 @@ public class Splash extends AppCompatActivity {
                     Intent i;
                     DAOUsuario daoUsuario = DAOUsuario.getInstance(getApplicationContext());
 
-
                     if (daoUsuario.select().size() == 0) {
                         i = new Intent(Splash.this, Login.class);
 
