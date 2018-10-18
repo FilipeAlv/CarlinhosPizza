@@ -53,7 +53,7 @@ public class FragmentProdutos extends Fragment {
             }
 
         }else{
-            Toast.makeText(getContext(), "ERRO NO SERVIDOR!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "ERRO NO SERVIDOR!", Toast.LENGTH_SHORT).show();
         }
 
 

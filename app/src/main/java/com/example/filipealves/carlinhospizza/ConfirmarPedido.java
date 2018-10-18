@@ -263,9 +263,7 @@ public class ConfirmarPedido extends AppCompatActivity {
 
         @Override
 
-        public void onTextChanged(CharSequence s, int start, int before,
-
-                                  int after) {
+        public void onTextChanged(CharSequence s, int start, int before, int after) {
 
             // Evita que o método seja executado varias vezes.
 
