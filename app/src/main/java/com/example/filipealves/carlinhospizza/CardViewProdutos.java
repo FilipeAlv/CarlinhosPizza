@@ -4,13 +4,9 @@ public class CardViewProdutos {
      private String nome, descricao, valor;
      private String URLimagem;
 
-     public CardViewProdutos(String nome, String descricao, String valor, String URLImagem){
-         this.nome=nome;
-         this.descricao=descricao;
-         this.valor=valor;
-         this.URLimagem = URLimagem;
 
-     }
+
+
 
 
     public String getURLImagem(){

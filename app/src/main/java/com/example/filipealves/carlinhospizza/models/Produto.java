@@ -2,7 +2,7 @@ package com.example.filipealves.carlinhospizza.models;
 
 public class Produto {
     int id;
-    String nome, descricao, valor, status, tipo, categoria, imagem, observacao;
+    String nome, descricao, valor, status, tipo, categoria, imagem, observacao, tamanho ;
     int quantidade;
 
     public String getNome(){
@@ -81,6 +81,14 @@ public class Produto {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public String getTamanho() {
+        return tamanho;
+    }
+
+    public void setTamanho(String tamanho) {
+        this.tamanho = tamanho;
     }
 }
 

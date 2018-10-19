@@ -23,6 +23,8 @@ import com.example.filipealves.carlinhospizza.adapter.PageAdapterPrincipal;
 import com.example.filipealves.carlinhospizza.adapter.RecycleViewAdapter;
 import com.example.filipealves.carlinhospizza.models.Produto;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class FragmentProdutos extends Fragment {
@@ -43,10 +45,24 @@ public class FragmentProdutos extends Fragment {
 
         if (Splash.PRODUTOS != null) {
             for (Produto produto : Splash.PRODUTOS) {
+                Log.d("", produto.getNome());
                 if (produto.getCategoria().equals(title)) {
-                    CardViewProdutos cardViewProdutos = new CardViewProdutos(produto.getNome(), produto.getDescricao(), "R$" + produto.getValor(), produto.getURLImagem());
+                    Calendar calendar = new GregorianCalendar();
+                    if(calendar.DAY_OF_WEEK==calendar.THURSDAY){
+                        if (produto.getCategoria().equals("Pizzas")&&produto.getTamanho().equals("Media")){
+                            produto.setValor("20.00");
+
+                        }
+                    }
+
+                    CardViewProdutos cardViewProdutos = new CardViewProdutos();
+                    cardViewProdutos.setNome(produto.getNome());
+                    cardViewProdutos.setDescricao(produto.getDescricao());
+                    produto.setValor("R$"+produto.getValor());
                     cardViewProdutos.setURLimagem(produto.getURLImagem());
+
                     cardViewProdutosList.add(cardViewProdutos);
+
 
                 }
 
