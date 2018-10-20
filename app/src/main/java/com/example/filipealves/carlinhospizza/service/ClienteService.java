@@ -40,4 +40,7 @@ public interface ClienteService {
 
         @GET("app/listar_cliente_login.php")
         Call<ClienteRet> buscarCliente(@Query("login") String login );
+
+        @GET("app/listar_cliente_login_senha.php")
+        Call<ClienteRet> validarCliente(@Query("login") String login, @Query("senha") String senha);
 }

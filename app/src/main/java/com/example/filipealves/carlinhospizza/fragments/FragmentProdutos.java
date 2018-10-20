@@ -1,12 +1,16 @@
 package com.example.filipealves.carlinhospizza.fragments;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.telephony.SmsManager;
@@ -17,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.filipealves.carlinhospizza.CardViewProdutos;
+import com.example.filipealves.carlinhospizza.MainActivity;
 import com.example.filipealves.carlinhospizza.R;
 import com.example.filipealves.carlinhospizza.Splash;
 import com.example.filipealves.carlinhospizza.adapter.PageAdapterPrincipal;
@@ -48,7 +53,7 @@ public class FragmentProdutos extends Fragment {
                 Log.d("", produto.getNome());
                 if (produto.getCategoria().equals(title)) {
                     Calendar calendar = new GregorianCalendar();
-                    if(calendar.DAY_OF_WEEK==calendar.THURSDAY){
+                    if(calendar.DAY_OF_WEEK==calendar.FRIDAY){
                         if (produto.getCategoria().equals("Pizzas")&&produto.getTamanho().equals("Media")){
                             produto.setValor("20.00");
 
@@ -58,7 +63,7 @@ public class FragmentProdutos extends Fragment {
                     CardViewProdutos cardViewProdutos = new CardViewProdutos();
                     cardViewProdutos.setNome(produto.getNome());
                     cardViewProdutos.setDescricao(produto.getDescricao());
-                    produto.setValor("R$"+produto.getValor());
+                    cardViewProdutos.setValor("R$"+produto.getValor());
                     cardViewProdutos.setURLimagem(produto.getURLImagem());
 
                     cardViewProdutosList.add(cardViewProdutos);
@@ -69,7 +74,19 @@ public class FragmentProdutos extends Fragment {
             }
 
         }else{
-            Toast.makeText(getContext(), "ERRO NO SERVIDOR!", Toast.LENGTH_SHORT).show();
+            new AlertDialog.Builder(getContext())
+                    .setTitle("Erro no servidor")
+                    .setMessage("Não foi possível conectar-se ao servidor")
+                    .setPositiveButton("OK",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Intent intent = new Intent(getActivity(), Splash.class);
+                                    getActivity().finish();
+                                    startActivity(intent);
+                                }
+
+                            }).show();
         }
 
 

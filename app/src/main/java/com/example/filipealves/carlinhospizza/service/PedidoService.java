@@ -23,7 +23,7 @@ public interface PedidoService {
         @GET("app/cadastro_pedido.php")
         Call<PedidoRet> insertPedidoEndereco(
                 @Query("descricao") String descricao,
-                @Query("valor") String valor,
+                @Query("valor") String valor,                                                   
                 @Query("forma_pagamento") String forma_pagamento,
                 @Query("troco") String troco,
                 @Query("cliente_id") int cliente_id,

@@ -12,7 +12,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.filipealves.carlinhospizza.dao.DAOUsuario;
+import com.example.filipealves.carlinhospizza.models.Cliente;
+import com.example.filipealves.carlinhospizza.models.ClienteRet;
 import com.example.filipealves.carlinhospizza.models.Usuario;
+import com.example.filipealves.carlinhospizza.retrofit.RetrofitConfig;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
     DAOUsuario daoUsuario = DAOUsuario.getInstance(this);
@@ -20,14 +27,18 @@ public class Login extends AppCompatActivity {
     static EditText password;
     static TextView tv_esqueceu_senha;
     static boolean logado;
+    EditText edPassword;
+    ClienteRet usuario;
+    EditText edLogin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
 
-        final EditText login = findViewById(R.id.edit_txt_login);
-        final EditText password = findViewById(R.id.edit_txt_password);
+        edLogin  = findViewById(R.id.edit_txt_login);
+        edPassword = findViewById(R.id.edit_txt_password);
         final Button bnt_login = findViewById(R.id.button_login);
         final Button btnCadastrar = findViewById(R.id.btn_Cadastrar);
 
@@ -46,23 +57,8 @@ public class Login extends AppCompatActivity {
         bnt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (validarUsuario(login.getText().toString(), password.getText().toString())){
+                validarUsuario(edLogin.getText().toString(), edPassword.getText().toString());
 
-
-                    Usuario usuario = new Usuario(login.getText().toString(), password.getText().toString());
-
-                    daoUsuario.deleteAll();
-                    daoUsuario.insert(usuario);
-                    Log.d("", daoUsuario.select().get(0).toString());
-
-                    Intent i = new Intent(Login.this, MainActivity.class);
-                    startActivity(i);
-                    logado = true;
-                }else{
-                    Toast.makeText(getApplicationContext(), "Erro ao logar. Verifique o login e a  senha.", Toast.LENGTH_SHORT).show();
-                    login.setText("");
-                    password.setText("");
-                }
             }
         });
 
@@ -77,18 +73,39 @@ public class Login extends AppCompatActivity {
 
     }
 
-    private boolean validarUsuario(String login, String senha) {
-        //VAI PEGAR DO SERVIDOR
-//        DAOUsuario  daoUsuario = new DAOUsuario(this);
-//        Usuario usuario = daoUsuario.select_verificarLogin(login,senha);
-//
-//            if(usuario != null){
-//                return true;
-//            }
-//
-//            return false;
-//
-//        }
-        return true;
+    private void validarUsuario(final String login, final String senha) {
+        Call<ClienteRet> call = new RetrofitConfig().getClienteService().validarCliente(login, senha);
+        call.enqueue(new Callback<ClienteRet>() {
+            @Override
+            public void onResponse(Call<ClienteRet> call, Response<ClienteRet> response) {
+                usuario = response.body();
+                if(usuario.getLogin()!=null) {
+                    mudarActivity(usuario);
+                }else {
+                    Toast.makeText(getApplicationContext(), "Erro ao logar. Verifique o login e a  senha.", Toast.LENGTH_SHORT).show();
+                    edLogin.setText("");
+                    edPassword.setText("");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ClienteRet> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+    private void mudarActivity(ClienteRet cliente){
+        Usuario usuario = new Usuario(cliente.getLogin(), cliente.getSenha());
+
+        daoUsuario.deleteAll();
+        daoUsuario.insert(usuario);
+        Log.d("", daoUsuario.select().get(0).toString());
+
+        Intent i = new Intent(Login.this, MainActivity.class);
+        startActivity(i);
+        logado = true;
+
     }
 }
