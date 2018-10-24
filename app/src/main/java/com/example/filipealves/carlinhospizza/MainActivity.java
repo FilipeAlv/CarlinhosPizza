@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        pedido.setProdutos(new ArrayList<Produto>());
+        //pedido.setProdutos(new ArrayList<Produto>());
 
         super.onResume();
     }

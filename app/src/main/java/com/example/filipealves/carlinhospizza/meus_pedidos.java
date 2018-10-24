@@ -40,10 +40,7 @@ public class meus_pedidos extends AppCompatActivity {
             Toast.makeText(this, "Voce não possui pedidos no momento", Toast.LENGTH_SHORT).show();
         }else {
 
-            for (Produto produto: MainActivity.pedido.getProdutos()) {
-                valorT+=Double.parseDouble(produto.getValor());
-                produto.setQuantidade(1);
-            }
+            somarProdutos();
 
             TextView valorTotal = findViewById(R.id.listValorTotal);
             ArrayAdapter<Produto> pedidosAdapter = new listAdapter(this, MainActivity.pedido.getProdutos(), valorT, valorTotal);
@@ -59,12 +56,14 @@ public class meus_pedidos extends AppCompatActivity {
     @Override
     protected void onStop() {
         valorT = 0;
-        for(RecycleViewAdapter.MyViewHolder holder: RecycleViewAdapter.HOLDERS){
-            if (holder.fab.getTag().equals("selecionado")){
-                holder.fab.setImageResource(R.drawable.fab_disponivel_24dp);
-                holder.fab.setTag("disponivel");
-            }
-        }
         super.onStop();
+    }
+
+
+    public void somarProdutos(){
+        for (Produto produto: MainActivity.pedido.getProdutos()) {
+            valorT+=Double.parseDouble(produto.getValor());
+            produto.setQuantidade(1);
+        }
     }
 }
