@@ -1,6 +1,7 @@
 package com.example.filipealves.carlinhospizza.adapter;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.IntegerRes;
@@ -112,6 +113,31 @@ public class listAdapter extends ArrayAdapter<Produto> {
             }
         });
 
+        holderList.observacao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AlertDialog.Builder(getContext())
+                        .setTitle("Alterar Pedido")
+                        .setMessage("Você pode adicionar mais sabores a sua pizza ou remover alguns ingredientes")
+                        .setPositiveButton("Adicionar",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    }
+
+                                }
+                                )
+                        .setNegativeButton("Remover",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    }
+                                }).show();
+            }
+        });
+
         return view;
     }
 
@@ -120,11 +146,13 @@ public class listAdapter extends ArrayAdapter<Produto> {
         final TextView qnt_mais;
         final TextView qnt_menos;
         final TextView qnt_text;
+        final ImageView  observacao;
 
         public ViewHolderList(View view) {
             qnt_mais = (TextView) view.findViewById(R.id.qnt_mais);
             qnt_menos = (TextView) view.findViewById(R.id.qnt_menos);
             qnt_text = view.findViewById(R.id.Quantidade);
+            observacao = view.findViewById(R.id.Observacao);
         }
 
     }
