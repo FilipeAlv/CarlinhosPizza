@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.annotation.IntegerRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -123,7 +125,8 @@ public class listAdapter extends ArrayAdapter<Produto> {
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                                        Intent intent = new Intent();
+                                        getContext().startActivity(intent);
                                     }
 
                                 }
@@ -132,7 +135,24 @@ public class listAdapter extends ArrayAdapter<Produto> {
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
+                                        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext())
+                                                .setTitle("Remover Ingredientes");
+                                        final EditText input = new EditText(getContext());
+                                        input.setHint("Ex.: Sem ervilha, sem tomate");
+                                        alertDialog.setView(input);
+                                        alertDialog.setPositiveButton("Salvar",
+                                                new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                                        elementos.get(position).setObservacao(input.getText().toString());
+                                                    }
+                                                })
+                                                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int i) {
 
+                                                    }
+                                                });
                                     }
                                 }).show();
             }
