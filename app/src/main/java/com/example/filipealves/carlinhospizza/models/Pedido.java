@@ -95,6 +95,7 @@ public class Pedido {
     public void setEndereco_id(int endereco_id) {
         this.endereco_id = endereco_id;
     }
+
 }
 
 

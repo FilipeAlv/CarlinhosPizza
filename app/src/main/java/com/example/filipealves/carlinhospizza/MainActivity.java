@@ -16,7 +16,10 @@ import android.widget.ImageButton;
 import com.example.filipealves.carlinhospizza.adapter.PageAdapterPrincipal;
 import com.example.filipealves.carlinhospizza.dao.DAOUsuario;
 import com.example.filipealves.carlinhospizza.models.Pedido;
+import com.example.filipealves.carlinhospizza.models.Produto;
 import com.example.filipealves.carlinhospizza.models.Usuario;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -54,10 +57,13 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
 
+    }
 
+    @Override
+    protected void onResume() {
+        pedido.setProdutos(new ArrayList<Produto>());
 
-
-
+        super.onResume();
     }
 
     @Override

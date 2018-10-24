@@ -10,8 +10,12 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.filipealves.carlinhospizza.adapter.RecycleViewAdapter;
 import com.example.filipealves.carlinhospizza.models.Produto;
 import com.example.filipealves.carlinhospizza.adapter.listAdapter;
+
+import java.util.ArrayList;
 
 
 public class meus_pedidos extends AppCompatActivity {
@@ -52,4 +56,15 @@ public class meus_pedidos extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onStop() {
+        valorT = 0;
+        for(RecycleViewAdapter.MyViewHolder holder: RecycleViewAdapter.HOLDERS){
+            if (holder.fab.getTag().equals("selecionado")){
+                holder.fab.setImageResource(R.drawable.fab_disponivel_24dp);
+                holder.fab.setTag("disponivel");
+            }
+        }
+        super.onStop();
+    }
 }

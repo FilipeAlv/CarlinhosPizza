@@ -53,7 +53,7 @@ public class FragmentProdutos extends Fragment {
                 Log.d("", produto.getNome());
                 if (produto.getCategoria().equals(title)) {
                     Calendar calendar = new GregorianCalendar();
-                    if(calendar.DAY_OF_WEEK==calendar.FRIDAY){
+                    if(calendar.DAY_OF_WEEK==calendar.THURSDAY){
                         if (produto.getCategoria().equals("Pizzas")&&produto.getTamanho().equals("Media")){
                             produto.setValor("20.00");
 
