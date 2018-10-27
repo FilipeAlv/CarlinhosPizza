@@ -14,11 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="br.com.carlinhospizza.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Splash"
+            android:name="br.com.carlinhospizza.Splash"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -28,20 +28,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".meus_pedidos"
+            android:name="br.com.carlinhospizza.meus_pedidos"
             android:label="@string/title_activity_meus_pedidos"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Login" />
+        <activity android:name="br.com.carlinhospizza.Login" />
         <activity
-            android:name=".activity_cadastrar"
+            android:name="br.com.carlinhospizza.activity_cadastrar"
             android:label="Casdastrar Usuario"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ConfirmarPedido" />
+        <activity android:name="br.com.carlinhospizza.ConfirmarPedido" />
         <activity
-            android:name=".activity_esqueci_Minha_Senha"
+            android:name="br.com.carlinhospizza.activity_esqueci_Minha_Senha"
             android:label="@string/title_activity_esqueci__minha__senha"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AdicionarSaborPizza"></activity>
+        <activity android:name="br.com.carlinhospizza.AdicionarSaborPizza"></activity>
     </application>
 
 </manifest>

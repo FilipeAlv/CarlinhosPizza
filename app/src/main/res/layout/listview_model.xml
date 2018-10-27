@@ -12,7 +12,7 @@
         android:layout_margin="@dimen/margin_card" />
     <LinearLayout
 
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="@dimen/margin_card">
@@ -31,8 +31,7 @@
             android:text="Valor"
             android:textColor="@color/colorPrimary"
             android:textStyle="bold"/>
-    </LinearLayout
->
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"

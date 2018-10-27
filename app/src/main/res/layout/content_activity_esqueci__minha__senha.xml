@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activity_esqueci_Minha_Senha"
+    tools:context="br.com.carlinhospizza.activity_esqueci_Minha_Senha"
     tools:showIn="@layout/activity_esqueci_minha_senha">
 
 </android.support.constraint.ConstraintLayout>
