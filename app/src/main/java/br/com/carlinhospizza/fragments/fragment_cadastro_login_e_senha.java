@@ -95,7 +95,7 @@ public class fragment_cadastro_login_e_senha extends Fragment {
                         call.enqueue(new Callback<String>() {
                             @Override
                             public void onResponse(Call<String> call, Response<String> response) {
-                                    Toast.makeText(getContext(),"Cadastro realizado com sucesso", Toast.LENGTH_SHORT).show();
+
                             }
 
                             @Override

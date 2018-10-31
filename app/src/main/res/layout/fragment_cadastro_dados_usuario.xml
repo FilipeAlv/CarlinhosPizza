@@ -38,7 +38,6 @@
             android:layout_weight="1"
             android:hint="Nome Completo"
             android:background="@drawable/estilo_edittext"
-            android:digits="abcdefghijlmnopqrstuvxzwyçQWERTYUIOPASDFGHJKLÇZXVCBNM^´ "
             android:inputType="textCapWords"
             android:nextFocusDown="@id/edCPF"/>
 

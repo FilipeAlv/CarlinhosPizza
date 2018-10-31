@@ -44,7 +44,7 @@ public class meus_pedidos extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Voce não possui pedidos no momento", Toast.LENGTH_SHORT).show();
                 }else if(!validarHorario()){
                     Toast.makeText(getApplicationContext(),"Desculpe! O horário de pedidos é de 18:00 às 23:30.", Toast.LENGTH_LONG).show();
-                }else if(!validarDia()){
+                }else if(validarDia()){
                     Toast.makeText(getApplicationContext(),"Desculpe! Estamos fechado para descanço. Abriremos amanahã.", Toast.LENGTH_LONG).show();
 
                 }else{
