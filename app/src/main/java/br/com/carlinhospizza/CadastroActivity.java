@@ -8,7 +8,7 @@ import com.example.filipealves.carlinhospizza.R;
 import br.com.carlinhospizza.fragments.fragment_dados_usuario;
 import br.com.carlinhospizza.models.Cliente;
 
-public class activity_cadastrar extends AppCompatActivity {
+public class CadastroActivity extends AppCompatActivity {
     public static Cliente CLIENTE;
     @Override
     public void onCreate(Bundle savedInstanceState) {

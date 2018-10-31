@@ -1,11 +1,7 @@
-package Util;
+package br.com.carlinhospizza.Util;
 
-import android.Manifest;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -14,10 +10,10 @@ import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.squareup.picasso.Picasso;
 
 import java.util.InputMismatchException;
-import java.util.Random;
 
 public class Util {
 
+    public static boolean ZERAR = false;
     public static boolean verificaConexao(Context context) {
         boolean conectado;
         ConnectivityManager conectivtyManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -100,6 +96,10 @@ public class Util {
             return (false);
         }
 
+    }
+
+    public static void print(String mensagem){
+        System.out.println(mensagem);
     }
 
 

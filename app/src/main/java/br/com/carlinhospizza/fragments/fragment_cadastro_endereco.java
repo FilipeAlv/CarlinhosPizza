@@ -11,10 +11,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.filipealves.carlinhospizza.R;
-import br.com.carlinhospizza.activity_cadastrar;
+import br.com.carlinhospizza.CadastroActivity;
 import br.com.carlinhospizza.models.Endereco;
 
-import Util.Util;
+import br.com.carlinhospizza.Util.Util;
 
 
 public class fragment_cadastro_endereco extends Fragment {
@@ -85,7 +85,7 @@ public class fragment_cadastro_endereco extends Fragment {
                     endereco.setNumero(edNumero.getText().toString());
                     endereco.setCidade(edCidade.getSelectedItem().toString());
                     endereco.setPonto_referencia(edPontoDeReferencia.getText().toString());
-                    activity_cadastrar.CLIENTE.setEndereco(endereco);
+                    CadastroActivity.CLIENTE.setEndereco(endereco);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout_cadastro, new fragment_cadastro_telefone()).commit();
 
                     }

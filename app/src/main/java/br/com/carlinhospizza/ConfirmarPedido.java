@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.filipealves.carlinhospizza.R;
 
+import br.com.carlinhospizza.Util.Util;
 import br.com.carlinhospizza.dao.DAOUsuario;
 import br.com.carlinhospizza.models.ClienteRet;
 import br.com.carlinhospizza.models.Endereco;
@@ -41,8 +42,8 @@ public class ConfirmarPedido extends AppCompatActivity {
     private Endereco endereco;
     private Usuario usuario;
     private int cliente_id;
-    private PedidoRet pedidoCadastrado = new PedidoRet();
-    int pedido_id;
+    private Pedido pedido;
+    private PedidoRet pedidoCadastrado;
     private String formaPagamento = "";
 
     @Override
@@ -53,6 +54,7 @@ public class ConfirmarPedido extends AppCompatActivity {
         usuario = usuarios.get(0);
         Call<Endereco> call = new RetrofitConfig().getClienteService().buscarEndereco(usuario.getLogin());
 
+        pedido = (Pedido) getIntent().getSerializableExtra("pedido");
         edNomeRua = findViewById(R.id.edNomeRua);
         edBairro = findViewById(R.id.edBairro);
         edCidade = findViewById(R.id.edCidade);
@@ -216,11 +218,11 @@ public class ConfirmarPedido extends AppCompatActivity {
 
     }
 
-    private void adicionarProdutos(int pedido) {
+    private void adicionarProdutos(int pedidoId) {
 
-        for (Produto produto : MainActivity.pedido.getProdutos()) {
+        for (Produto produto : pedido.getProdutos()) {
             Call<PedidoRet> call2 = new RetrofitConfig().getPedidoService().insertPedidoProduto(
-                    pedido,
+                    pedidoId,
                     produto.getId(),
                     produto.getQuantidade(),
                     produto.getObservacao());
@@ -239,6 +241,7 @@ public class ConfirmarPedido extends AppCompatActivity {
             });
         }
 
+
         new android.app.AlertDialog.Builder(this)
                 .setTitle("Obrigado!")
                 .setMessage("Seu pedido foi realizado com sucesso. Agora é só esperar que em até 40min seu pedido será entregue")
@@ -246,14 +249,17 @@ public class ConfirmarPedido extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                MainActivity.pedido.setProdutos(new ArrayList<Produto>());
-                                startActivity(intent);
+
+//                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                Util.ZERAR=true;
                                 finish();
                             }
 
                         }).show();
     }
+
+
+
 
 
     private class MascaraMonetaria implements TextWatcher {
@@ -353,5 +359,7 @@ public class ConfirmarPedido extends AppCompatActivity {
 
 
     }
+
+
 
 }

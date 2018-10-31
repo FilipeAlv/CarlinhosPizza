@@ -33,7 +33,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="br.com.carlinhospizza.Login" />
         <activity
-            android:name="br.com.carlinhospizza.activity_cadastrar"
+            android:name="br.com.carlinhospizza.CadastroActivity"
             android:label="Casdastrar Usuario"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="br.com.carlinhospizza.ConfirmarPedido" />

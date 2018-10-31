@@ -10,9 +10,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.filipealves.carlinhospizza.R;
-import br.com.carlinhospizza.activity_cadastrar;
+import br.com.carlinhospizza.CadastroActivity;
 
-import Util.Util;
+import br.com.carlinhospizza.Util.Util;
 
 
 public class fragment_cadastro_telefone extends Fragment {
@@ -59,7 +59,7 @@ public class fragment_cadastro_telefone extends Fragment {
                 if(etNumeroTelefone.getText().length()==0){
                     Toast.makeText(view.getContext(), "Seu número de telefone é importante para o cadastro.", Toast.LENGTH_SHORT).show();
                 }else {
-                    activity_cadastrar.CLIENTE.setTelefone(etNumeroTelefone.getText().toString());
+                    CadastroActivity.CLIENTE.setTelefone(etNumeroTelefone.getText().toString());
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout_cadastro, new fragment_cadastro_login_e_senha()).commit();
                 }
 

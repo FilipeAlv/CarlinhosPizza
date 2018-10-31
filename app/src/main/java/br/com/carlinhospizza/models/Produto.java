@@ -1,6 +1,8 @@
 package br.com.carlinhospizza.models;
 
-public class Produto {
+import java.io.Serializable;
+
+public class Produto implements Serializable {
     int id;
     String nome, descricao, valor, status, tipo, categoria, imagem, observacao, tamanho, fatias ;
     int quantidade;

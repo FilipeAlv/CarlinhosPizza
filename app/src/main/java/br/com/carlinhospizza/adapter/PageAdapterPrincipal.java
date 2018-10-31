@@ -6,15 +6,18 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import br.com.carlinhospizza.fragments.FragmentPrincipal;
+import br.com.carlinhospizza.models.Pedido;
 
 public class PageAdapterPrincipal extends FragmentStatePagerAdapter {
-    String[] titles, titlesTab1, titlesTab2;
-    static FragmentPrincipal fragmentPrincipal;
-    public PageAdapterPrincipal(FragmentManager fm, String[] titles, String[] titlesTab1, String[] titlesTab2) {
+    private String[] titles, titlesTab1, titlesTab2;
+    private FragmentPrincipal fragmentPrincipal;
+    private Pedido pedido;
+    public PageAdapterPrincipal(FragmentManager fm, String[] titles, String[] titlesTab1, String[] titlesTab2, Pedido pedido) {
         super(fm);
         this.titles=titles;
         this.titlesTab1=titlesTab1;
         this.titlesTab2=titlesTab2;
+        this.pedido = pedido;
 
     }
 
@@ -22,10 +25,10 @@ public class PageAdapterPrincipal extends FragmentStatePagerAdapter {
     public Fragment getItem(final int position) {
         switch (position){
             case 0:
-                fragmentPrincipal = new FragmentPrincipal(titlesTab1,"Salgados");
+                fragmentPrincipal = new FragmentPrincipal(titlesTab1,"Salgados", pedido);
                 return fragmentPrincipal;
             case 1:
-                fragmentPrincipal = new FragmentPrincipal(titlesTab2, "Bebidas");
+                fragmentPrincipal = new FragmentPrincipal(titlesTab2, "Bebidas", pedido);
                 return fragmentPrincipal;
                 default:
                     return null;
@@ -44,7 +47,7 @@ public class PageAdapterPrincipal extends FragmentStatePagerAdapter {
         return titles[position];
     }
 
-    public static FragmentPrincipal getFragmentPrincipal() {
+    public FragmentPrincipal getFragmentPrincipal() {
         return fragmentPrincipal;
     }
 }

@@ -10,9 +10,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.filipealves.carlinhospizza.R;
-import br.com.carlinhospizza.activity_cadastrar;
+import br.com.carlinhospizza.CadastroActivity;
 
-import Util.Util;
+import br.com.carlinhospizza.Util.Util;
 
 
 public class fragment_dados_usuario extends Fragment {
@@ -51,10 +51,10 @@ public class fragment_dados_usuario extends Fragment {
                    Toast.makeText(view.getContext(), "Verifique se todos os dados estão preenchidos " +
                            "corretamente. Certifique-se que o seu CPF é válido.", Toast.LENGTH_LONG).show();
                }else {
-                   activity_cadastrar.CLIENTE.setNome(edNome.getText().toString());
-                   activity_cadastrar.CLIENTE.setCpf(edCPF.getText().toString());
-                   activity_cadastrar.CLIENTE.setRg(edRG.getText().toString());
-                   activity_cadastrar.CLIENTE.setData_nascimento(edData_nascimento.getText().toString());
+                   CadastroActivity.CLIENTE.setNome(edNome.getText().toString());
+                   CadastroActivity.CLIENTE.setCpf(edCPF.getText().toString());
+                   CadastroActivity.CLIENTE.setRg(edRG.getText().toString());
+                   CadastroActivity.CLIENTE.setData_nascimento(edData_nascimento.getText().toString());
                    acaoProximoEndereco();
                }
            }

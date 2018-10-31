@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.filipealves.carlinhospizza.R;
-import br.com.carlinhospizza.activity_cadastrar;
+import br.com.carlinhospizza.CadastroActivity;
 import br.com.carlinhospizza.dao.DAOUsuario;
 import br.com.carlinhospizza.models.Cliente;
 import br.com.carlinhospizza.retrofit.RetrofitConfig;
@@ -65,9 +65,9 @@ public class fragment_cadastro_login_e_senha extends Fragment {
 
                 }
                     else{
-                    activity_cadastrar.CLIENTE.setLogin(edLogin.getText().toString());
-                    activity_cadastrar.CLIENTE.setPassword(edSenha.getText().toString());
-                    cadastrarCliente(activity_cadastrar.CLIENTE);
+                    CadastroActivity.CLIENTE.setLogin(edLogin.getText().toString());
+                    CadastroActivity.CLIENTE.setPassword(edSenha.getText().toString());
+                    cadastrarCliente(CadastroActivity.CLIENTE);
 
                     getActivity().finish();
                 }

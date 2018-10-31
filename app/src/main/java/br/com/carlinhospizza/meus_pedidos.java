@@ -22,6 +22,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Timer;
 
+import br.com.carlinhospizza.models.Pedido;
 import br.com.carlinhospizza.models.Produto;
 import br.com.carlinhospizza.adapter.listAdapter;
 
@@ -30,17 +31,20 @@ public class meus_pedidos extends AppCompatActivity {
     public static double valorT=0;
     public static  TextView valorTotal;
     Button confirmarPedido;
+    private Pedido pedido;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meus_pedidos);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        pedido = (Pedido) getIntent().getSerializableExtra("pedido");
         confirmarPedido = (Button) findViewById(R.id.bnt_confirmarPedido);
         confirmarPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(MainActivity.pedido.getProdutos().size()==0){
+                if(pedido.getProdutos().size()==0){
                     Toast.makeText(getApplicationContext(),"Voce não possui pedidos no momento", Toast.LENGTH_SHORT).show();
                 }else if(!validarHorario()){
                     Toast.makeText(getApplicationContext(),"Desculpe! O horário de pedidos é de 18:00 às 23:30.", Toast.LENGTH_LONG).show();
@@ -49,19 +53,20 @@ public class meus_pedidos extends AppCompatActivity {
 
                 }else{
                     Intent intent = new Intent(meus_pedidos.this, ConfirmarPedido.class);
+                    intent.putExtra("pedido", pedido);
                     startActivity(intent);
                 }
             }
         });
 
-        if (MainActivity.pedido.getProdutos().size()==0){
+        if (pedido.getProdutos().size()==0){
             Toast.makeText(this, "Voce não possui pedidos no momento", Toast.LENGTH_SHORT).show();
         }else {
 
             somarProdutos();
 
             valorTotal = findViewById(R.id.listValorTotal);
-            ArrayAdapter<Produto> pedidosAdapter = new listAdapter(this, MainActivity.pedido.getProdutos(), valorT, valorTotal);
+            ArrayAdapter<Produto> pedidosAdapter = new listAdapter(this, pedido.getProdutos(), valorT, valorTotal, pedido);
             ListView lvPedidos = (ListView) findViewById(R.id.lv_pedidos);
             lvPedidos.setAdapter(pedidosAdapter);
 
@@ -110,7 +115,7 @@ public class meus_pedidos extends AppCompatActivity {
     }
 
     public void somarProdutos(){
-        for (Produto produto: MainActivity.pedido.getProdutos()) {
+        for (Produto produto: pedido.getProdutos()) {
             valorT+=Double.parseDouble(produto.getValor());
             produto.setQuantidade(1);
         }

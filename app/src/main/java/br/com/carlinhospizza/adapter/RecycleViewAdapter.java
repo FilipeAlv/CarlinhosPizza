@@ -9,28 +9,30 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import br.com.carlinhospizza.CardViewProdutos;
-import br.com.carlinhospizza.MainActivity;
+
 import com.example.filipealves.carlinhospizza.R;
 import br.com.carlinhospizza.controller.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Util.Util;
+import br.com.carlinhospizza.Util.Util;
+import br.com.carlinhospizza.models.Pedido;
 
 
 public class RecycleViewAdapter extends RecyclerView.Adapter <RecycleViewAdapter.MyViewHolder>{
 
     private Context mContext;
-    private List<CardViewProdutos> mCardViewProdutosList;
+    public static List<CardViewProdutos> mCardViewProdutosList;
     public static ArrayList<MyViewHolder> HOLDERS = new ArrayList<>();
+    private Pedido pedido;
 
-    public RecycleViewAdapter(Context mContext, List<CardViewProdutos> mCardViewProdutosList) {
+    public RecycleViewAdapter(Context mContext, List<CardViewProdutos> mCardViewProdutosList, Pedido pedido) {
         this.mContext = mContext;
         this.mCardViewProdutosList = mCardViewProdutosList;
+        this.pedido = pedido;
     }
 
     @NonNull
@@ -54,9 +56,11 @@ public class RecycleViewAdapter extends RecyclerView.Adapter <RecycleViewAdapter
 
             Util.carregarImagem(holder.imgProduto, mCardViewProdutosList.get(position).getURLImagem());
 
-            holder.fab.setOnClickListener( new Controller(MainActivity.pedido, holder, position, mCardViewProdutosList));
-            holder.imgProduto.setOnClickListener( new Controller(MainActivity.pedido, holder, position, mCardViewProdutosList));
+            holder.fab.setOnClickListener( new Controller(pedido, holder, position, mCardViewProdutosList));
+            holder.imgProduto.setOnClickListener( new Controller(pedido, holder, position, mCardViewProdutosList));
             HOLDERS.add(holder);
+
+
     }
 
 

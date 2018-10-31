@@ -21,22 +21,26 @@ import br.com.carlinhospizza.AdicionarSaborPizza;
 import com.example.filipealves.carlinhospizza.R;
 
 import br.com.carlinhospizza.MainActivity;
+import br.com.carlinhospizza.models.Pedido;
 import br.com.carlinhospizza.models.Produto;
 import java.util.ArrayList;
 
-import Util.Util;
+import br.com.carlinhospizza.Util.Util;
 
 public class listAdapter extends ArrayAdapter<Produto> {
     private final Context context;
     private final ArrayList<Produto> elementos;
     private double valorT;
     private TextView valorTotal;
+    private Pedido pedido;
 
-    public listAdapter(Context context, ArrayList<Produto> elementos, double valorT, TextView valorTotal) {
+
+    public listAdapter(Context context, ArrayList<Produto> elementos, double valorT, TextView valorTotal, Pedido pedido) {
         super(context, R.layout.listview_model, elementos);
         this.context=context;
         this.elementos=elementos;
         this.valorT = valorT;
+        this.pedido = pedido;
         this.valorTotal = valorTotal;
     }
 
@@ -75,7 +79,7 @@ public class listAdapter extends ArrayAdapter<Produto> {
                                                 valorTotal.setText("R$" + valorT + "0");
                                                 elementos.remove(elementos.get(position));
                                                 notifyDataSetChanged();
-                                                if(MainActivity.pedido.getProdutos().size()==0)
+                                                if(pedido.getProdutos().size()==0)
                                                     MainActivity.getFavProdutos().setBackgroundResource(R.drawable.ic_pedidos);
 
                                             }

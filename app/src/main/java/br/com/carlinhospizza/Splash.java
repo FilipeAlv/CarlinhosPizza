@@ -16,7 +16,7 @@ import br.com.carlinhospizza.retrofit.RetrofitConfig;
 
 import java.util.List;
 
-import Util.Util;
+import br.com.carlinhospizza.Util.Util;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
