@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import br.com.carlinhospizza.CardViewProdutos;
 
@@ -46,14 +47,15 @@ public class FragmentProdutos extends Fragment {
                 Log.d("", produto.getNome());
                 if (produto.getCategoria().equals(title)) {
                     Calendar calendar = new GregorianCalendar();
-                    if(calendar.DAY_OF_WEEK==calendar.THURSDAY){
-                        if (produto.getCategoria().equals("Pizzas")&&produto.getTamanho().equals("Media")){
-                            produto.setValor("20.00");
-
-                        }
-                    }
+//                    if(calendar.DAY_OF_WEEK==calendar.SATURDAY){
+//                        if (produto.getCategoria().equals("Pizzas")&&produto.getTamanho().equals("grande")){
+//                            produto.setValor("20.00");
+//
+//                        }
+//                    }
 
                     CardViewProdutos cardViewProdutos = new CardViewProdutos();
+                    cardViewProdutos.setFatias(produto.getFatias());
                     cardViewProdutos.setNome(produto.getNome());
                     cardViewProdutos.setDescricao(produto.getDescricao());
                     cardViewProdutos.setValor("R$"+produto.getValor());

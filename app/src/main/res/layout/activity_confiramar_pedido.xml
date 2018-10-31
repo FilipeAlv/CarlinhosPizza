@@ -104,6 +104,8 @@
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/estilo_edittext"
                 android:hint="Troco"
+                android:focusable="false"
+                android:enabled="true"
                 android:padding="10dp"
                 android:visibility="gone"/>
 

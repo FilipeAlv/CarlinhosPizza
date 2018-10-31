@@ -57,7 +57,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        //pedido.setProdutos(new ArrayList<Produto>());
+//        if(pedido.getProdutos().size()==0){
+//            fabPedidos.setImageResource(R.drawable.ic_pedidos);
+//        }
 
         super.onResume();
     }

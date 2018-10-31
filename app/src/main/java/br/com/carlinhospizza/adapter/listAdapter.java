@@ -19,6 +19,8 @@ import android.widget.TextView;
 
 import br.com.carlinhospizza.AdicionarSaborPizza;
 import com.example.filipealves.carlinhospizza.R;
+
+import br.com.carlinhospizza.MainActivity;
 import br.com.carlinhospizza.models.Produto;
 import java.util.ArrayList;
 
@@ -73,6 +75,9 @@ public class listAdapter extends ArrayAdapter<Produto> {
                                                 valorTotal.setText("R$" + valorT + "0");
                                                 elementos.remove(elementos.get(position));
                                                 notifyDataSetChanged();
+                                                if(MainActivity.pedido.getProdutos().size()==0)
+                                                    MainActivity.getFavProdutos().setBackgroundResource(R.drawable.ic_pedidos);
+
                                             }
 
                                         })
@@ -169,6 +174,11 @@ public class listAdapter extends ArrayAdapter<Produto> {
             });
 
         }else{
+            holderList.observacao.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+
                     final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext())
                             .setTitle("Remover Ingredientes");
                     final EditText input = new EditText(getContext());
@@ -188,6 +198,8 @@ public class listAdapter extends ArrayAdapter<Produto> {
                                 }
                             });
                     alertDialog.show();
+                }
+            });
         }
 
         return view;

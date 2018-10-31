@@ -102,8 +102,8 @@ public class ConfirmarPedido extends AppCompatActivity {
         cartao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edTroco.setVisibility(View.INVISIBLE);
-                tvTroco.setVisibility(View.INVISIBLE);
+                edTroco.setVisibility(View.GONE);
+                tvTroco.setVisibility(View.GONE);
 
             }
         });

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import br.com.carlinhospizza.CardViewProdutos;
 import br.com.carlinhospizza.MainActivity;
@@ -46,6 +47,10 @@ public class RecycleViewAdapter extends RecyclerView.Adapter <RecycleViewAdapter
             holder.tvNome.setText(mCardViewProdutosList.get(position).getNome());
             holder.tvDescricao.setText(mCardViewProdutosList.get(position).getDescricao());
             holder.tvValor.setText(mCardViewProdutosList.get(position).getValor());
+            if(mCardViewProdutosList.get(position).getFatias().equals("vazio"))
+                holder.tvFatias.setVisibility(View.GONE);
+            else
+                holder.tvFatias.setText(mCardViewProdutosList.get(position).getFatias());
 
             Util.carregarImagem(holder.imgProduto, mCardViewProdutosList.get(position).getURLImagem());
 
@@ -63,7 +68,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter <RecycleViewAdapter
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView tvNome, tvDescricao, tvValor;
+        public TextView tvNome, tvDescricao, tvValor, tvFatias;
         public ImageView imgProduto;
         public ImageButton fab;
         public MyViewHolder(View itemView) {
@@ -74,6 +79,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter <RecycleViewAdapter
             tvValor = (TextView) itemView.findViewById(R.id.txtValorCard);
             imgProduto =(ImageView) itemView.findViewById(R.id.imgProduto);
             fab = (ImageButton) itemView.findViewById(R.id.fab);
+            tvFatias = itemView.findViewById(R.id.txtFatias);
 
 
         }

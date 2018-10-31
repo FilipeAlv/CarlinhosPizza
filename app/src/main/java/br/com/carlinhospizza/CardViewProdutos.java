@@ -1,7 +1,7 @@
 package br.com.carlinhospizza;
 
 public class CardViewProdutos {
-     private String nome, descricao, valor;
+     private String nome, descricao, valor, fatias;
      private String URLimagem;
 
 
@@ -41,5 +41,17 @@ public class CardViewProdutos {
 
     public void setValor(String valor) {
         this.valor = valor;
+    }
+
+    public String getFatias() {
+        return fatias;
+    }
+
+    public void setFatias(String fatias) {
+        this.fatias = fatias;
+    }
+
+    public String getURLimagem() {
+        return URLimagem;
     }
 }

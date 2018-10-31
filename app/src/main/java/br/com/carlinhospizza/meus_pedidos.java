@@ -43,8 +43,11 @@ public class meus_pedidos extends AppCompatActivity {
                 if(MainActivity.pedido.getProdutos().size()==0){
                     Toast.makeText(getApplicationContext(),"Voce não possui pedidos no momento", Toast.LENGTH_SHORT).show();
                 }else if(!validarHorario()){
-                    Toast.makeText(getApplicationContext(),"Desculpe! O horário de pedidos é de 18:00 às 22:30.", Toast.LENGTH_LONG).show();
-                }else {
+                    Toast.makeText(getApplicationContext(),"Desculpe! O horário de pedidos é de 18:00 às 23:30.", Toast.LENGTH_LONG).show();
+                }else if(!validarDia()){
+                    Toast.makeText(getApplicationContext(),"Desculpe! Estamos fechado para descanço. Abriremos amanahã.", Toast.LENGTH_LONG).show();
+
+                }else{
                     Intent intent = new Intent(meus_pedidos.this, ConfirmarPedido.class);
                     startActivity(intent);
                 }
@@ -98,6 +101,13 @@ public class meus_pedidos extends AppCompatActivity {
         return false;
     }
 
+    private boolean validarDia(){
+        Calendar hoje = new GregorianCalendar();
+
+        if (hoje.DAY_OF_WEEK==Calendar.MONDAY)
+            return  true;
+        return false;
+    }
 
     public void somarProdutos(){
         for (Produto produto: MainActivity.pedido.getProdutos()) {
@@ -105,4 +115,5 @@ public class meus_pedidos extends AppCompatActivity {
             produto.setQuantidade(1);
         }
     }
+
 }

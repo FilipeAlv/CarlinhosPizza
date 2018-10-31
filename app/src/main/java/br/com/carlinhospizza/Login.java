@@ -83,7 +83,6 @@ public class Login extends AppCompatActivity {
                     mudarActivity(usuario);
                 }else {
                     Toast.makeText(getApplicationContext(), "Erro ao logar. Verifique o login e a  senha.", Toast.LENGTH_SHORT).show();
-                    edLogin.setText("");
                     edPassword.setText("");
                 }
             }
@@ -106,6 +105,7 @@ public class Login extends AppCompatActivity {
         Intent i = new Intent(Login.this, MainActivity.class);
         startActivity(i);
         logado = true;
+        finish();
 
     }
 }
