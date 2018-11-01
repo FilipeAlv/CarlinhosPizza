@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="br.com.carlinhospizza.fragments.fragment_dados_usuario"
+    tools:context="br.com.carlinhospizza.fragments.CadastroDadosUsuarioFragment"
     >
 
 
@@ -38,6 +38,7 @@
             android:layout_weight="1"
             android:hint="Nome Completo"
             android:background="@drawable/estilo_edittext"
+            android:digits="abcdefghijlmnopqrstuvxzwyçQWERTYUIOPASDFGHJKLÇZXVCBNM^´ "
             android:inputType="textCapWords"
             android:nextFocusDown="@id/edCPF"/>
 

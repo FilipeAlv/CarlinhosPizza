@@ -14,7 +14,6 @@ import android.widget.HorizontalScrollView;
 
 import com.example.filipealves.carlinhospizza.R;
 import br.com.carlinhospizza.adapter.PageAdapterSecundaria;
-import br.com.carlinhospizza.models.Pedido;
 
 
 @SuppressLint("ValidFragment")
@@ -24,13 +23,11 @@ public class FragmentPrincipal extends Fragment {
     private  ViewPager viewPager;
     private String[] titles;
     private String tipo;
-    private Pedido pedido;
 
     @SuppressLint("ValidFragment")
-    public FragmentPrincipal(String[] titles, String tipo, Pedido pedido){
+    public FragmentPrincipal(String[] titles, String tipo){
         this.titles=titles;
         this.tipo = tipo;
-        this.pedido = pedido;
     }
 
     @Nullable
@@ -42,7 +39,7 @@ public class FragmentPrincipal extends Fragment {
 
        // horizontalScrollView = (HorizontalScrollView) view.findViewById(R.id.horiozntalScroll);
 
-        viewPager.setAdapter(new PageAdapterSecundaria(getChildFragmentManager(),titles, tipo, pedido));
+        viewPager.setAdapter(new PageAdapterSecundaria(getChildFragmentManager(),titles, tipo));
         tabLayout.setupWithViewPager(viewPager);
         return view;
     }

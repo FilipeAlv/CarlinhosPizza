@@ -7,19 +7,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.widget.HorizontalScrollView;
 import br.com.carlinhospizza.fragments.FragmentProdutos;
-import br.com.carlinhospizza.models.Pedido;
 
 public class PageAdapterSecundaria extends FragmentStatePagerAdapter {
     String[] titles;
     private HorizontalScrollView horizontalScrollView;
     private FragmentProdutos fragmentProdutos;
-    private Pedido pedido;
     private String tipo;
-    public PageAdapterSecundaria(FragmentManager fm, String[] titles, String tipo, Pedido pedido) {
+    public PageAdapterSecundaria(FragmentManager fm, String[] titles, String tipo) {
         super(fm);
         this.titles =titles;
         this.tipo = tipo;
-        this.pedido = pedido;
     }
 
     @Override
@@ -36,7 +33,6 @@ public class PageAdapterSecundaria extends FragmentStatePagerAdapter {
         Bundle bundle = new Bundle();
         fragmentProdutos = new FragmentProdutos();
         bundle.putString("title", titles[position]);
-        bundle.putSerializable("pedido", pedido);
         fragmentProdutos.setArguments(bundle);
         return fragmentProdutos;
 

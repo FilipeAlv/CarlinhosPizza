@@ -11,28 +11,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import br.com.carlinhospizza.CardViewProdutos;
-
+import br.com.carlinhospizza.MainActivity;
 import com.example.filipealves.carlinhospizza.R;
 import br.com.carlinhospizza.controller.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.carlinhospizza.Util.Util;
-import br.com.carlinhospizza.models.Pedido;
+import br.com.carlinhospizza.util.Util;
 
 
 public class RecycleViewAdapter extends RecyclerView.Adapter <RecycleViewAdapter.MyViewHolder>{
 
     private Context mContext;
-    public static List<CardViewProdutos> mCardViewProdutosList;
+    private List<CardViewProdutos> mCardViewProdutosList;
     public static ArrayList<MyViewHolder> HOLDERS = new ArrayList<>();
-    private Pedido pedido;
 
-    public RecycleViewAdapter(Context mContext, List<CardViewProdutos> mCardViewProdutosList, Pedido pedido) {
+    public RecycleViewAdapter(Context mContext, List<CardViewProdutos> mCardViewProdutosList) {
         this.mContext = mContext;
         this.mCardViewProdutosList = mCardViewProdutosList;
-        this.pedido = pedido;
     }
 
     @NonNull
@@ -49,18 +46,12 @@ public class RecycleViewAdapter extends RecyclerView.Adapter <RecycleViewAdapter
             holder.tvNome.setText(mCardViewProdutosList.get(position).getNome());
             holder.tvDescricao.setText(mCardViewProdutosList.get(position).getDescricao());
             holder.tvValor.setText(mCardViewProdutosList.get(position).getValor());
-            if(mCardViewProdutosList.get(position).getFatias().equals("vazio"))
-                holder.tvFatias.setVisibility(View.GONE);
-            else
-                holder.tvFatias.setText(mCardViewProdutosList.get(position).getFatias());
 
             Util.carregarImagem(holder.imgProduto, mCardViewProdutosList.get(position).getURLImagem());
 
-            holder.fab.setOnClickListener( new Controller(pedido, holder, position, mCardViewProdutosList));
-            holder.imgProduto.setOnClickListener( new Controller(pedido, holder, position, mCardViewProdutosList));
+            holder.fab.setOnClickListener( new Controller(Util.PEDIDO, holder, position, mCardViewProdutosList));
+            holder.imgProduto.setOnClickListener( new Controller(Util.PEDIDO, holder, position, mCardViewProdutosList));
             HOLDERS.add(holder);
-
-
     }
 
 
@@ -72,7 +63,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter <RecycleViewAdapter
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView tvNome, tvDescricao, tvValor, tvFatias;
+        public TextView tvNome, tvDescricao, tvValor;
         public ImageView imgProduto;
         public ImageButton fab;
         public MyViewHolder(View itemView) {
@@ -83,7 +74,6 @@ public class RecycleViewAdapter extends RecyclerView.Adapter <RecycleViewAdapter
             tvValor = (TextView) itemView.findViewById(R.id.txtValorCard);
             imgProduto =(ImageView) itemView.findViewById(R.id.imgProduto);
             fab = (ImageButton) itemView.findViewById(R.id.fab);
-            tvFatias = itemView.findViewById(R.id.txtFatias);
 
 
         }

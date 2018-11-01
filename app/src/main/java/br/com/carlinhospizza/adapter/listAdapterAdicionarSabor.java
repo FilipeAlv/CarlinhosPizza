@@ -14,23 +14,26 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import br.com.carlinhospizza.meus_pedidos;
+import br.com.carlinhospizza.ActivityMeusPedidos;
 
 import com.example.filipealves.carlinhospizza.R;
 import br.com.carlinhospizza.models.Produto;
 
 import java.util.ArrayList;
 
-public class listAdapterAdicionarSabor extends ArrayAdapter<Produto> {
+public class ListAdapterAdicionarSabor extends ArrayAdapter<Produto> {
     private final Context context;
     private final ArrayList<Produto> elementos;
-    Produto produto;
-
-    public listAdapterAdicionarSabor(Context context, ArrayList<Produto> elementos,  Produto produto) {
+    private Produto produto;
+    private double valorT;
+    private TextView valorTotal;
+    public ListAdapterAdicionarSabor(Context context, ArrayList<Produto> elementos, Produto produto, double valorT, TextView valorTotal) {
         super(context, R.layout.listview_model, elementos);
         this.context=context;
         this.elementos=elementos;
         this.produto = produto;
+        this.valorT = valorT;
+        this.valorTotal = valorTotal;
     }
 
     @NonNull
@@ -61,13 +64,12 @@ public class listAdapterAdicionarSabor extends ArrayAdapter<Produto> {
 
                                                 if (Double.parseDouble(elementos.get(position).getValor()) >
                                                         Double.parseDouble(produto.getValor())) {
-                                                    meus_pedidos.valorT -= Double.parseDouble(produto.getValor());
-                                                    meus_pedidos.valorT+= Double.parseDouble(elementos.get(position).getValor());
-                                                    meus_pedidos.valorTotal.setText("R$" + meus_pedidos.valorT + "0");
+                                                    valorT -= Double.parseDouble(produto.getValor());
+                                                    valorT+= Double.parseDouble(elementos.get(position).getValor());
+                                                    valorTotal.setText("R$" + valorT + "0");
                                                 }
                                                 produto.setObservacao("Metade " + produto.getNome() + ", metade "+ elementos.get(position).getNome());
-                                                Intent intent = new Intent(context, meus_pedidos.class);
-                                                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                                                Intent intent = new Intent(context, ActivityMeusPedidos.class);
                                                 context.startActivity(intent);
                                                 ((Activity) context).finish();
 

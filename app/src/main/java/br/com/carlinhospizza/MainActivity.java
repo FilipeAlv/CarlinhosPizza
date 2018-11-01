@@ -13,12 +13,11 @@ import android.widget.ImageButton;
 
 import com.example.filipealves.carlinhospizza.R;
 
-import br.com.carlinhospizza.Util.Util;
 import br.com.carlinhospizza.adapter.PageAdapterPrincipal;
 import br.com.carlinhospizza.adapter.RecycleViewAdapter;
-import br.com.carlinhospizza.controller.Controller;
 import br.com.carlinhospizza.dao.DAOUsuario;
 import br.com.carlinhospizza.models.Pedido;
+import br.com.carlinhospizza.util.Util;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -26,8 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private static ImageButton fabPedidos;
-    private  Pedido pedido = new Pedido();
-    private  DAOUsuario daoUsuario;
+    public  DAOUsuario daoUsuario = DAOUsuario.getInstance(this);
 
 
     @Override
@@ -36,16 +34,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        daoUsuario = DAOUsuario.getInstance(this);
-
+        Util.PEDIDO  = new Pedido();
         fabPedidos = findViewById(R.id.fabPedidos);
         fabPedidos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Util.print("CLICK");
-                Intent intent = new Intent(MainActivity.this, meus_pedidos.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                intent.putExtra("pedido", pedido);
+                Intent intent = new Intent(MainActivity.this, ActivityMeusPedidos.class);
                 startActivity(intent);
             }
         });
@@ -53,12 +47,9 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabLayoutPrincipal);
         viewPager = (ViewPager) findViewById(R.id.viewPagerPrincipal);
 
-        viewPager.setAdapter(new PageAdapterPrincipal(
-                getSupportFragmentManager(),
-                getResources().getStringArray(R.array.titles_Principal),
+        viewPager.setAdapter(new PageAdapterPrincipal(getSupportFragmentManager(), getResources().getStringArray(R.array.titles_Principal),
                 getResources().getStringArray(R.array.titles_Secundaria_tab_1),
-                getResources().getStringArray(R.array.titles_Secundaria_tab_2),
-                pedido));
+                getResources().getStringArray(R.array.titles_Secundaria_tab_2)));
 
         tabLayout.setupWithViewPager(viewPager);
 
@@ -67,17 +58,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(Util.ZERAR){
-            for ( RecycleViewAdapter.MyViewHolder holder : RecycleViewAdapter.HOLDERS) {
-                 if (holder.fab.getTag().equals("selecionado")){
-                    holder.fab.setImageResource(R.drawable.fab_disponivel_24dp);
+        if (Util.STATUS) {
+            for (RecycleViewAdapter.MyViewHolder holder : RecycleViewAdapter.HOLDERS) {
+                if (holder.fab.getTag().equals("selecionado")) {
                     holder.fab.setTag("disponivel");
-
-
+                    holder.fab.setImageResource(R.drawable.fab_disponivel_24dp);
                 }
             }
+            Util.STATUS = false;
         }
-        Util.ZERAR=false;
     }
 
     @Override

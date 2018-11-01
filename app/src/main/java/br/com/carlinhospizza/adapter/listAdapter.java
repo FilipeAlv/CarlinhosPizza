@@ -19,28 +19,22 @@ import android.widget.TextView;
 
 import br.com.carlinhospizza.AdicionarSaborPizza;
 import com.example.filipealves.carlinhospizza.R;
-
-import br.com.carlinhospizza.MainActivity;
-import br.com.carlinhospizza.models.Pedido;
 import br.com.carlinhospizza.models.Produto;
 import java.util.ArrayList;
 
-import br.com.carlinhospizza.Util.Util;
+import br.com.carlinhospizza.util.Util;
 
-public class listAdapter extends ArrayAdapter<Produto> {
+public class ListAdapter extends ArrayAdapter<Produto> {
     private final Context context;
     private final ArrayList<Produto> elementos;
     private double valorT;
-    private TextView valorTotal;
-    private Pedido pedido;
+    public static TextView valorTotal;
 
-
-    public listAdapter(Context context, ArrayList<Produto> elementos, double valorT, TextView valorTotal, Pedido pedido) {
+    public ListAdapter(Context context, ArrayList<Produto> elementos, double valorT, TextView valorTotal) {
         super(context, R.layout.listview_model, elementos);
         this.context=context;
         this.elementos=elementos;
         this.valorT = valorT;
-        this.pedido = pedido;
         this.valorTotal = valorTotal;
     }
 
@@ -79,9 +73,6 @@ public class listAdapter extends ArrayAdapter<Produto> {
                                                 valorTotal.setText("R$" + valorT + "0");
                                                 elementos.remove(elementos.get(position));
                                                 notifyDataSetChanged();
-                                                if(pedido.getProdutos().size()==0)
-                                                    MainActivity.getFavProdutos().setBackgroundResource(R.drawable.ic_pedidos);
-
                                             }
 
                                         })
@@ -141,10 +132,10 @@ public class listAdapter extends ArrayAdapter<Produto> {
                                             Bundle bundle = new Bundle();
                                             bundle.putString("produto",elementos.get(position).getNome());
                                             bundle.putString("tamanho", elementos.get(position).getTamanho());
+                                            bundle.putDouble("valorT", valorT);
                                             intent.putExtras(bundle);
                                             intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                                             context.startActivity(intent);
-                                            ((Activity)context).finish();
                                         }
 
                                     }
@@ -178,11 +169,6 @@ public class listAdapter extends ArrayAdapter<Produto> {
             });
 
         }else{
-            holderList.observacao.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-
                     final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext())
                             .setTitle("Remover Ingredientes");
                     final EditText input = new EditText(getContext());
@@ -202,8 +188,6 @@ public class listAdapter extends ArrayAdapter<Produto> {
                                 }
                             });
                     alertDialog.show();
-                }
-            });
         }
 
         return view;

@@ -16,7 +16,7 @@ import br.com.carlinhospizza.retrofit.RetrofitConfig;
 
 import java.util.List;
 
-import br.com.carlinhospizza.Util.Util;
+import br.com.carlinhospizza.util.Util;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,7 +24,6 @@ import retrofit2.Response;
 public class Splash extends AppCompatActivity {
 
     private static int SPLASH_TIME_OUT = 4000;
-    public static List<Produto> PRODUTOS;
     private Usuario usuario = null;
 
     @Override
@@ -38,7 +37,7 @@ public class Splash extends AppCompatActivity {
             call.enqueue(new Callback<List<Produto>>() {
                 @Override
                 public void onResponse(Call<List<Produto>> call, Response<List<Produto>> response) {
-                    PRODUTOS = response.body();
+                    Util.PRODUTOS = response.body();
                 }
 
                 @Override

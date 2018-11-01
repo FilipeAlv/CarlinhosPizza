@@ -9,6 +9,8 @@ import br.com.carlinhospizza.Splash;
 import br.com.carlinhospizza.models.Pedido;
 import br.com.carlinhospizza.models.Produto;
 import br.com.carlinhospizza.adapter.RecycleViewAdapter;
+import br.com.carlinhospizza.util.Util;
+
 import java.util.List;
 
 
@@ -44,7 +46,7 @@ public class Controller implements View.OnClickListener {
     }
 
     private void adicionarProduto(String nome){
-            for (Produto produto : Splash.PRODUTOS) {
+            for (Produto produto : Util.PRODUTOS) {
                 if (produto.getNome().equals(nome)) {
                     pedido.getProdutos().add(produto);
                     break;
@@ -58,7 +60,7 @@ public class Controller implements View.OnClickListener {
     }
 
     private void removerProduto(String nome){
-        for (Produto produto:Splash.PRODUTOS) {
+        for (Produto produto:Util.PRODUTOS) {
             if (produto.getNome().equals(nome)){
                 pedido.getProdutos().remove(produto);
                 break;

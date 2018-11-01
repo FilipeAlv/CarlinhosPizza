@@ -47,7 +47,7 @@ public class Login extends AppCompatActivity {
         tv_esqueceu_senha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Login.this, activity_esqueci_Minha_Senha.class);
+                Intent intent = new Intent(Login.this, ActivityEqueceuSenha.class);
                 startActivity(intent);
             }
         });
@@ -65,7 +65,7 @@ public class Login extends AppCompatActivity {
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Login.this, CadastroActivity.class);
+                Intent intent = new Intent(Login.this, ActivityCadastro.class);
                 startActivity(intent);
             }
         });
@@ -83,6 +83,7 @@ public class Login extends AppCompatActivity {
                     mudarActivity(usuario);
                 }else {
                     Toast.makeText(getApplicationContext(), "Erro ao logar. Verifique o login e a  senha.", Toast.LENGTH_SHORT).show();
+                    edLogin.setText("");
                     edPassword.setText("");
                 }
             }
@@ -105,7 +106,6 @@ public class Login extends AppCompatActivity {
         Intent i = new Intent(Login.this, MainActivity.class);
         startActivity(i);
         logado = true;
-        finish();
 
     }
 }

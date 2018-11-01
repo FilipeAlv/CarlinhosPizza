@@ -1,10 +1,8 @@
 package br.com.carlinhospizza.models;
 
-import java.io.Serializable;
-
-public class Produto implements Serializable {
+public class Produto {
     int id;
-    String nome, descricao, valor, status, tipo, categoria, imagem, observacao, tamanho, fatias ;
+    String nome, descricao, valor, status, tipo, categoria, imagem, observacao, tamanho ;
     int quantidade;
 
     public String getNome(){
@@ -91,15 +89,6 @@ public class Produto implements Serializable {
 
     public void setTamanho(String tamanho) {
         this.tamanho = tamanho;
-    }
-
-    public String getFatias() {
-        return fatias;
-    }
-
-
-    public void setFatias(String fatias) {
-        this.fatias = fatias;
     }
 }
 

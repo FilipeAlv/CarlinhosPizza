@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.example.filipealves.carlinhospizza.R;
 
-import br.com.carlinhospizza.Util.Util;
 import br.com.carlinhospizza.dao.DAOUsuario;
 import br.com.carlinhospizza.models.ClienteRet;
 import br.com.carlinhospizza.models.Endereco;
@@ -28,6 +27,7 @@ import br.com.carlinhospizza.retrofit.RetrofitConfig;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
+import br.com.carlinhospizza.util.Util;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -42,8 +42,8 @@ public class ConfirmarPedido extends AppCompatActivity {
     private Endereco endereco;
     private Usuario usuario;
     private int cliente_id;
-    private Pedido pedido;
-    private PedidoRet pedidoCadastrado;
+    private PedidoRet pedidoCadastrado = new PedidoRet();
+    private double valorT;
     private String formaPagamento = "";
 
     @Override
@@ -54,7 +54,6 @@ public class ConfirmarPedido extends AppCompatActivity {
         usuario = usuarios.get(0);
         Call<Endereco> call = new RetrofitConfig().getClienteService().buscarEndereco(usuario.getLogin());
 
-        pedido = (Pedido) getIntent().getSerializableExtra("pedido");
         edNomeRua = findViewById(R.id.edNomeRua);
         edBairro = findViewById(R.id.edBairro);
         edCidade = findViewById(R.id.edCidade);
@@ -62,6 +61,7 @@ public class ConfirmarPedido extends AppCompatActivity {
         edNumero = findViewById(R.id.edNumeroCasa);
         edPontoDeReferencia = findViewById(R.id.edPontoDeReferencia);
 
+        valorT= getIntent().getDoubleExtra("valorT", 0);
         final RadioButton dinheiro = findViewById(R.id.checkDinheiro);
         final RadioButton cartao = findViewById(R.id.checkCartao);
         final TextView tvTroco = findViewById(R.id.txtTroco);
@@ -72,7 +72,7 @@ public class ConfirmarPedido extends AppCompatActivity {
         edTroco.addTextChangedListener(new MascaraMonetaria(edTroco));
 
 
-        edValor.setText("R$" + meus_pedidos.valorT + "0");
+        edValor.setText("R$" + valorT + "0");
 
         call.enqueue(new Callback<Endereco>() {
             @Override
@@ -104,8 +104,8 @@ public class ConfirmarPedido extends AppCompatActivity {
         cartao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edTroco.setVisibility(View.GONE);
-                tvTroco.setVisibility(View.GONE);
+                edTroco.setVisibility(View.INVISIBLE);
+                tvTroco.setVisibility(View.INVISIBLE);
 
             }
         });
@@ -218,11 +218,11 @@ public class ConfirmarPedido extends AppCompatActivity {
 
     }
 
-    private void adicionarProdutos(int pedidoId) {
+    private void adicionarProdutos(int pedido) {
 
-        for (Produto produto : pedido.getProdutos()) {
+        for (Produto produto : Util.PEDIDO.getProdutos()) {
             Call<PedidoRet> call2 = new RetrofitConfig().getPedidoService().insertPedidoProduto(
-                    pedidoId,
+                    pedido,
                     produto.getId(),
                     produto.getQuantidade(),
                     produto.getObservacao());
@@ -241,7 +241,6 @@ public class ConfirmarPedido extends AppCompatActivity {
             });
         }
 
-
         new android.app.AlertDialog.Builder(this)
                 .setTitle("Obrigado!")
                 .setMessage("Seu pedido foi realizado com sucesso. Agora é só esperar que em até 40min seu pedido será entregue")
@@ -249,17 +248,13 @@ public class ConfirmarPedido extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-
-//                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                Util.ZERAR=true;
+                                Util.PEDIDO.setProdutos(new ArrayList<Produto>());
+                                Util.STATUS = true;
                                 finish();
                             }
 
                         }).show();
     }
-
-
-
 
 
     private class MascaraMonetaria implements TextWatcher {
@@ -359,7 +354,5 @@ public class ConfirmarPedido extends AppCompatActivity {
 
 
     }
-
-
 
 }
