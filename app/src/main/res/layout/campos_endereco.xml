@@ -17,7 +17,6 @@
                 android:layout_weight="1"
                 android:background="@drawable/estilo_edittext"
                 android:hint="Nome da rua"
-                android:digits="abcdefghijlmnopqrstuvxzwyçQWERTYUIOPASDFGHJKLÇZXVCBNM^´ "
                 android:padding="10dp"
                 android:inputType="textCapWords"
                 android:nextFocusDown="@id/edBairro"/>
@@ -34,7 +33,6 @@
                 android:background="@drawable/estilo_edittext"
                 android:hint="Bairro"
                 android:inputType="textCapWords"
-                android:digits="abcdefghijlmnopqrstuvxzwyçQWERTYUIOPASDFGHJKLÇZXVCBNM^´ "
                 android:padding="10dp"
                 android:nextFocusRight="@id/edNumeroCasa"/>
 

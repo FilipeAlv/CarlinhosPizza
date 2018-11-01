@@ -1,6 +1,7 @@
 package br.com.carlinhospizza.retrofit;
 
 
+import br.com.carlinhospizza.models.Cliente;
 import br.com.carlinhospizza.service.ClienteService;
 import br.com.carlinhospizza.service.PedidoService;
 import br.com.carlinhospizza.service.ProdutosService;

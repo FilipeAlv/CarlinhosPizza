@@ -1,6 +1,4 @@
 package br.com.carlinhospizza.adapter;
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -8,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,18 +18,19 @@ import android.widget.TextView;
 
 import br.com.carlinhospizza.AdicionarSaborPizza;
 import com.example.filipealves.carlinhospizza.R;
+
+import br.com.carlinhospizza.models.Pedido;
 import br.com.carlinhospizza.models.Produto;
 import java.util.ArrayList;
 
 import br.com.carlinhospizza.util.Util;
 
-public class ListAdapter extends ArrayAdapter<Produto> {
+public class MyListAdapter extends ArrayAdapter<Produto> {
     private final Context context;
     private final ArrayList<Produto> elementos;
     private double valorT;
     public static TextView valorTotal;
-
-    public ListAdapter(Context context, ArrayList<Produto> elementos, double valorT, TextView valorTotal) {
+    public MyListAdapter(Context context, ArrayList<Produto> elementos, double valorT, TextView valorTotal) {
         super(context, R.layout.listview_model, elementos);
         this.context=context;
         this.elementos=elementos;
@@ -57,7 +57,7 @@ public class ListAdapter extends ArrayAdapter<Produto> {
         iconDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for (RecycleViewAdapter.MyViewHolder hold: RecycleViewAdapter.HOLDERS) {
+                for (final RecycleViewAdapter.MyViewHolder hold: RecycleViewAdapter.HOLDERS) {
                     final RecycleViewAdapter.MyViewHolder holder = hold;
                     if (holder.tvNome.getText().equals(elementos.get(position).getNome())){
                         new AlertDialog.Builder(view.getContext())
@@ -169,6 +169,10 @@ public class ListAdapter extends ArrayAdapter<Produto> {
             });
 
         }else{
+
+            holderList.observacao.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
                     final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext())
                             .setTitle("Remover Ingredientes");
                     final EditText input = new EditText(getContext());
@@ -188,6 +192,9 @@ public class ListAdapter extends ArrayAdapter<Produto> {
                                 }
                             });
                     alertDialog.show();
+                }
+            });
+
         }
 
         return view;

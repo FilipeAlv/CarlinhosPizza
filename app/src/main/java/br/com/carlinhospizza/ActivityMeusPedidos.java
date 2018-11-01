@@ -17,8 +17,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import br.com.carlinhospizza.adapter.MyListAdapter;
 import br.com.carlinhospizza.models.Produto;
-import br.com.carlinhospizza.adapter.ListAdapter;
 import br.com.carlinhospizza.util.Util;
 
 
@@ -56,7 +56,7 @@ public class ActivityMeusPedidos extends AppCompatActivity {
             somarProdutos();
 
             valorTotal = findViewById(R.id.listValorTotal);
-            ArrayAdapter<Produto> pedidosAdapter = new ListAdapter(this, Util.PEDIDO.getProdutos(), valorT, valorTotal);
+            ArrayAdapter<Produto> pedidosAdapter = new MyListAdapter(this, Util.PEDIDO.getProdutos(), valorT, valorTotal);
             ListView lvPedidos = (ListView) findViewById(R.id.lv_pedidos);
             lvPedidos.setAdapter(pedidosAdapter);
 

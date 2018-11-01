@@ -13,6 +13,7 @@ import com.example.filipealves.carlinhospizza.R;
 import br.com.carlinhospizza.CadastroActivity;
 import br.com.carlinhospizza.dao.DAOUsuario;
 import br.com.carlinhospizza.models.Cliente;
+import br.com.carlinhospizza.models.ClienteRet;
 import br.com.carlinhospizza.retrofit.RetrofitConfig;
 
 import retrofit2.Call;
@@ -48,7 +49,7 @@ public class fragment_cadastro_login_e_senha extends Fragment {
         btnAnteriorConfirmarCodigo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout_cadastro, new fragment_codigoDeConfirmacao()).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout_cadastro, new fragment_cadastro_telefone()).commit();
             }
         });
 
@@ -63,14 +64,10 @@ public class fragment_cadastro_login_e_senha extends Fragment {
                 }else if (!edConfSenha.getText().toString().trim().equals(edSenha.getText().toString().trim())){
                     Toast.makeText(view.getContext(), "As senhas inseridas não são iguais", Toast.LENGTH_SHORT).show();
 
+                }else{
+                    validarExistencia(edLogin.getText().toString().trim());
                 }
-                    else{
-                    CadastroActivity.CLIENTE.setLogin(edLogin.getText().toString());
-                    CadastroActivity.CLIENTE.setPassword(edSenha.getText().toString());
-                    cadastrarCliente(CadastroActivity.CLIENTE);
 
-                    getActivity().finish();
-                }
             }
         });
 
@@ -107,5 +104,30 @@ public class fragment_cadastro_login_e_senha extends Fragment {
 
 
     }
+
+    private void validarExistencia(final String login){
+        Call<ClienteRet> call = new RetrofitConfig().getClienteService().buscarCliente(login);
+        call.enqueue(new Callback<ClienteRet>() {
+            @Override
+            public void onResponse(Call<ClienteRet> call, Response<ClienteRet> response) {
+                ClienteRet cliente = response.body();
+                if (login.equals(cliente.getLogin())){
+                    Toast.makeText(getContext(), "Este usuário já está sendo utilizado.", Toast.LENGTH_SHORT).show();
+                }else{
+                    CadastroActivity.CLIENTE.setLogin(edLogin.getText().toString());
+                    CadastroActivity.CLIENTE.setPassword(edSenha.getText().toString());
+                    cadastrarCliente(CadastroActivity.CLIENTE);
+                    Toast.makeText(getContext(), "Este usuário já está sendo utilizado.", Toast.LENGTH_SHORT).show();
+                    getActivity().finish();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ClienteRet> call, Throwable t) {
+
+            }
+        });
+    }
+
 
 }

@@ -19,7 +19,7 @@ import com.example.filipealves.carlinhospizza.R;
 
 import java.util.Random;
 
-public class activity_esqueci_Minha_Senha extends AppCompatActivity {
+public class EsqueciASenha extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

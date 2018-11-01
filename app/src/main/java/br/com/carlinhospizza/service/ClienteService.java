@@ -1,5 +1,6 @@
 package br.com.carlinhospizza.service;
 
+import br.com.carlinhospizza.models.Cliente;
 import br.com.carlinhospizza.models.ClienteRet;
 import br.com.carlinhospizza.models.Endereco;
 
@@ -33,4 +34,5 @@ public interface ClienteService {
 
         @GET("app/listar_cliente_login_senha.php")
         Call<ClienteRet> validarCliente(@Query("login") String login, @Query("senha") String senha);
+
 }

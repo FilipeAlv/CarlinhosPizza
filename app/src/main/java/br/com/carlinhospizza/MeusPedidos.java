@@ -1,9 +1,7 @@
 package br.com.carlinhospizza;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -15,19 +13,16 @@ import android.widget.Toast;
 
 import com.example.filipealves.carlinhospizza.R;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Timer;
 
+import java.util.GregorianCalendar;
+import br.com.carlinhospizza.adapter.MyListAdapter;
 import br.com.carlinhospizza.models.Pedido;
 import br.com.carlinhospizza.models.Produto;
-import br.com.carlinhospizza.adapter.listAdapter;
 
 
-public class meus_pedidos extends AppCompatActivity {
+public class MeusPedidos extends AppCompatActivity {
     public static double valorT=0;
     public static  TextView valorTotal;
     Button confirmarPedido;
@@ -49,10 +44,10 @@ public class meus_pedidos extends AppCompatActivity {
                 }else if(!validarHorario()){
                     Toast.makeText(getApplicationContext(),"Desculpe! O horário de pedidos é de 18:00 às 23:30.", Toast.LENGTH_LONG).show();
                 }else if(validarDia()){
-                    Toast.makeText(getApplicationContext(),"Desculpe! Estamos fechado para descanço. Abriremos amanahã.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Desculpe! Estamos fechado para descanço. Abriremos amanhã.", Toast.LENGTH_LONG).show();
 
                 }else{
-                    Intent intent = new Intent(meus_pedidos.this, ConfirmarPedido.class);
+                    Intent intent = new Intent(MeusPedidos.this, ConfirmarPedido.class);
                     intent.putExtra("pedido", pedido);
                     startActivity(intent);
                 }
@@ -66,7 +61,7 @@ public class meus_pedidos extends AppCompatActivity {
             somarProdutos();
 
             valorTotal = findViewById(R.id.listValorTotal);
-            ArrayAdapter<Produto> pedidosAdapter = new listAdapter(this, pedido.getProdutos(), valorT, valorTotal, pedido);
+            ArrayAdapter<Produto> pedidosAdapter = new MyListAdapter(this, pedido.getProdutos(), valorT, valorTotal);
             ListView lvPedidos = (ListView) findViewById(R.id.lv_pedidos);
             lvPedidos.setAdapter(pedidosAdapter);
 

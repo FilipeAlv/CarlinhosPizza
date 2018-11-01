@@ -97,6 +97,7 @@ public class ConfirmarPedido extends AppCompatActivity {
             public void onClick(View view) {
                 tvTroco.setVisibility(View.VISIBLE);
                 edTroco.setVisibility(View.VISIBLE);
+                formaPagamento = dinheiro.getText().toString();
 
             }
         });
@@ -104,8 +105,9 @@ public class ConfirmarPedido extends AppCompatActivity {
         cartao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edTroco.setVisibility(View.INVISIBLE);
-                tvTroco.setVisibility(View.INVISIBLE);
+                edTroco.setVisibility(View.GONE);
+                tvTroco.setVisibility(View.GONE);
+                formaPagamento = cartao.getText().toString();
 
             }
         });

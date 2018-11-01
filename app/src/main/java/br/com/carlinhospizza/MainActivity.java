@@ -56,6 +56,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        System.exit(0);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         if (Util.STATUS) {
@@ -65,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     holder.fab.setImageResource(R.drawable.fab_disponivel_24dp);
                 }
             }
+            fabPedidos.setBackgroundResource(R.drawable.ic_pedidos);
             Util.STATUS = false;
         }
     }

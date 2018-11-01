@@ -1,8 +1,9 @@
 package br.com.carlinhospizza.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Pedido {
+public class Pedido implements Serializable{
      int id;
      String status;
      String descricao;

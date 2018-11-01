@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.example.filipealves.carlinhospizza.R;
 import br.com.carlinhospizza.CadastroActivity;
 
-import br.com.carlinhospizza.Util.Util;
+import br.com.carlinhospizza.util.Util;
 
 
 public class fragment_dados_usuario extends Fragment {
