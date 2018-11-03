@@ -1,4 +1,4 @@
-package br.com.carlinhospizza;
+package br.com.carlinhospizza.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

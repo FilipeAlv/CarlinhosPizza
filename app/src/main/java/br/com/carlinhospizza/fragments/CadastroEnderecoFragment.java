@@ -11,7 +11,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.filipealves.carlinhospizza.R;
-import br.com.carlinhospizza.ActivityCadastro;
+import br.com.carlinhospizza.activity.ActivityCadastro;
 import br.com.carlinhospizza.models.Endereco;
 
 import br.com.carlinhospizza.util.Util;

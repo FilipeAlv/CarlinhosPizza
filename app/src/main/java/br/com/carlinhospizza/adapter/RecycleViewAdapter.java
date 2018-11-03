@@ -1,17 +1,22 @@
 package br.com.carlinhospizza.adapter;
 
 import android.content.Context;
+import android.graphics.LinearGradient;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import br.com.carlinhospizza.CardViewProdutos;
-import br.com.carlinhospizza.MainActivity;
+import br.com.carlinhospizza.activity.CardViewProdutos;
+
 import com.example.filipealves.carlinhospizza.R;
 import br.com.carlinhospizza.controller.Controller;
 
@@ -30,6 +35,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter <RecycleViewAdapter
     public RecycleViewAdapter(Context mContext, List<CardViewProdutos> mCardViewProdutosList) {
         this.mContext = mContext;
         this.mCardViewProdutosList = mCardViewProdutosList;
+
     }
 
     @NonNull
@@ -46,11 +52,12 @@ public class RecycleViewAdapter extends RecyclerView.Adapter <RecycleViewAdapter
             holder.tvNome.setText(mCardViewProdutosList.get(position).getNome());
             holder.tvDescricao.setText(mCardViewProdutosList.get(position).getDescricao());
             holder.tvValor.setText(mCardViewProdutosList.get(position).getValor());
+            Drawable background = holder.card.getBackground();
 
-            Util.carregarImagem(holder.imgProduto, mCardViewProdutosList.get(position).getURLImagem());
+           // Util.carregarImagem(holder.imgProduto, mCardViewProdutosList.get(position).getURLImagem());
 
-            holder.fab.setOnClickListener( new Controller(Util.PEDIDO, holder, position, mCardViewProdutosList));
-            holder.imgProduto.setOnClickListener( new Controller(Util.PEDIDO, holder, position, mCardViewProdutosList));
+            holder.fab.setOnClickListener( new Controller(Util.PEDIDO, holder, position, mCardViewProdutosList, background));
+            holder.card.setOnClickListener( new Controller(Util.PEDIDO, holder, position, mCardViewProdutosList, background));
             HOLDERS.add(holder);
     }
 
@@ -66,16 +73,18 @@ public class RecycleViewAdapter extends RecyclerView.Adapter <RecycleViewAdapter
         public TextView tvNome, tvDescricao, tvValor;
         public ImageView imgProduto;
         public ImageButton fab;
+        public CardView card;
         public MyViewHolder(View itemView) {
             super(itemView);
 
             tvNome = (TextView) itemView.findViewById(R.id.txtNomeCard);
             tvDescricao = (TextView) itemView.findViewById(R.id.txtDescricaoCard);
             tvValor = (TextView) itemView.findViewById(R.id.txtValorCard);
-            imgProduto =(ImageView) itemView.findViewById(R.id.imgProduto);
+            //imgProduto =(ImageView) itemView.findViewById(R.id.imgProduto);
             fab = (ImageButton) itemView.findViewById(R.id.fab);
+            card = itemView.findViewById(R.id.fundoCard);
 
 
-        }
+        };
     }
 }

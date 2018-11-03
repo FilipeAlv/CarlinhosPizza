@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +15,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import br.com.carlinhospizza.AdicionarSaborPizza;
+import br.com.carlinhospizza.activity.AdicionarSaborPizza;
 import com.example.filipealves.carlinhospizza.R;
 
-import br.com.carlinhospizza.models.Pedido;
+import br.com.carlinhospizza.controller.Controller;
 import br.com.carlinhospizza.models.Produto;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import br.com.carlinhospizza.util.Util;
@@ -45,8 +46,8 @@ public class MyListAdapter extends ArrayAdapter<Produto> {
                 .getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.listview_model, parent, false);
 
-        ImageView imageProduto = view.findViewById(R.id.listImageProduto);
-        Util.carregarImagem(imageProduto, elementos.get(position).getURLImagem());
+       // ImageView imageProduto = view.findViewById(R.id.listImageProduto);
+        //Util.carregarImagem(imageProduto, elementos.get(position).getURLImagem());
         final TextView nomeProduto = view.findViewById(R.id.listNomeProduto);
         final TextView valorProduto = view.findViewById(R.id.listValorProduto);
         final ImageButton iconDelete = view.findViewById(R.id.listIconDelete);
@@ -69,6 +70,7 @@ public class MyListAdapter extends ArrayAdapter<Produto> {
                                             public void onClick(DialogInterface dialogInterface, int i) {
                                                 holder.fab.setImageResource(R.drawable.fab_disponivel_24dp);
                                                 holder.fab.setTag("disponivel");
+                                                holder.card.setBackground(Controller.background);
                                                 valorT -= Double.parseDouble(elementos.get(position).getValor())*Integer.parseInt(holderList.qnt_text.getText().toString());
                                                 valorTotal.setText("R$" + valorT + "0");
                                                 elementos.remove(elementos.get(position));
@@ -134,7 +136,6 @@ public class MyListAdapter extends ArrayAdapter<Produto> {
                                             bundle.putString("tamanho", elementos.get(position).getTamanho());
                                             bundle.putDouble("valorT", valorT);
                                             intent.putExtras(bundle);
-                                            intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                                             context.startActivity(intent);
                                         }
 
@@ -200,18 +201,20 @@ public class MyListAdapter extends ArrayAdapter<Produto> {
         return view;
     }
 
-    public class ViewHolderList {
+    public class ViewHolderList implements Serializable{
 
         final TextView qnt_mais;
         final TextView qnt_menos;
         final TextView qnt_text;
         final ImageView  observacao;
+        final TextView outroSabor;
 
         public ViewHolderList(View view) {
             qnt_mais = (TextView) view.findViewById(R.id.qnt_mais);
             qnt_menos = (TextView) view.findViewById(R.id.qnt_menos);
             qnt_text = view.findViewById(R.id.Quantidade);
             observacao = view.findViewById(R.id.Observacao);
+            outroSabor = view.findViewById(R.id.outroSabor);
         }
 
     }

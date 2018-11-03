@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.filipealves.carlinhospizza.R;
-import br.com.carlinhospizza.ActivityCadastro;
+import br.com.carlinhospizza.activity.ActivityCadastro;
 import br.com.carlinhospizza.dao.DAOUsuario;
 import br.com.carlinhospizza.models.Cliente;
 import br.com.carlinhospizza.retrofit.RetrofitConfig;

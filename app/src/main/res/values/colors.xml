@@ -26,4 +26,7 @@
     <color name="colorEditText">#6d6d70</color>
     <color name="colorBackButton">#dbdce1</color>
     <color name="colorEsqueceuSenha">#000000</color>
+
+    <color name="contornoCard">#90ef4848</color>
+    <color name="contornoCardSelecionado">#259330</color>
 </resources>

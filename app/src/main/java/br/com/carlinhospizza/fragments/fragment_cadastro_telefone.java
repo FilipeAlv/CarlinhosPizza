@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.filipealves.carlinhospizza.R;
-import br.com.carlinhospizza.CadastroActivity;
+import br.com.carlinhospizza.activity.CadastroActivity;
 
 import br.com.carlinhospizza.util.Util;
 

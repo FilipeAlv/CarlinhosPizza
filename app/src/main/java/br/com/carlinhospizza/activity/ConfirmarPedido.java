@@ -1,4 +1,4 @@
-package br.com.carlinhospizza;
+package br.com.carlinhospizza.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.filipealves.carlinhospizza.R;
 
+import br.com.carlinhospizza.adapter.MyListAdapter;
 import br.com.carlinhospizza.dao.DAOUsuario;
 import br.com.carlinhospizza.models.ClienteRet;
 import br.com.carlinhospizza.models.Endereco;
@@ -43,7 +44,6 @@ public class ConfirmarPedido extends AppCompatActivity {
     private Usuario usuario;
     private int cliente_id;
     private PedidoRet pedidoCadastrado = new PedidoRet();
-    private double valorT;
     private String formaPagamento = "";
 
     @Override
@@ -61,7 +61,6 @@ public class ConfirmarPedido extends AppCompatActivity {
         edNumero = findViewById(R.id.edNumeroCasa);
         edPontoDeReferencia = findViewById(R.id.edPontoDeReferencia);
 
-        valorT= getIntent().getDoubleExtra("valorT", 0);
         final RadioButton dinheiro = findViewById(R.id.checkDinheiro);
         final RadioButton cartao = findViewById(R.id.checkCartao);
         final TextView tvTroco = findViewById(R.id.txtTroco);
@@ -72,7 +71,7 @@ public class ConfirmarPedido extends AppCompatActivity {
         edTroco.addTextChangedListener(new MascaraMonetaria(edTroco));
 
 
-        edValor.setText("R$" + valorT + "0");
+        edValor.setText(MyListAdapter.valorTotal.getText());
 
         call.enqueue(new Callback<Endereco>() {
             @Override

@@ -1,4 +1,4 @@
-package br.com.carlinhospizza;
+package br.com.carlinhospizza.activity;
 
 import android.Manifest;
 import android.content.Context;
@@ -19,7 +19,7 @@ import com.example.filipealves.carlinhospizza.R;
 
 import java.util.Random;
 
-public class EsqueciASenha extends AppCompatActivity {
+public class ActivityEqueceuSenha extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

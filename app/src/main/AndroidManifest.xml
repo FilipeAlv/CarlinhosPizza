@@ -14,11 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="br.com.carlinhospizza.MainActivity"
+            android:name="br.com.carlinhospizza.activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="br.com.carlinhospizza.Splash"
+            android:name="br.com.carlinhospizza.activity.Splash"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -28,20 +28,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="br.com.carlinhospizza.ActivityMeusPedidos"
+            android:name="br.com.carlinhospizza.activity.ActivityMeusPedidos"
             android:label="@string/title_activity_meus_pedidos"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="br.com.carlinhospizza.Login" />
+        <activity android:name="br.com.carlinhospizza.activity.Login" />
         <activity
-            android:name="br.com.carlinhospizza.ActivityCadastro"
+            android:name="br.com.carlinhospizza.activity.ActivityCadastro"
             android:label="Casdastrar Usuario"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="br.com.carlinhospizza.ConfirmarPedido" />
+        <activity android:name="br.com.carlinhospizza.activity.ConfirmarPedido" />
         <activity
-            android:name="br.com.carlinhospizza.ActivityEqueceuSenha"
+            android:name="br.com.carlinhospizza.activity.ActivityEqueceuSenha"
             android:label="@string/title_activity_esqueci__minha__senha"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="br.com.carlinhospizza.AdicionarSaborPizza"></activity>
+        <activity android:name="br.com.carlinhospizza.activity.AdicionarSaborPizza"></activity>
     </application>
 
 </manifest>

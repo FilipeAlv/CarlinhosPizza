@@ -4,6 +4,7 @@ public class Produto {
     int id;
     String nome, descricao, valor, status, tipo, categoria, imagem, observacao, tamanho ;
     int quantidade;
+    boolean isMultiSabores;
 
     public String getNome(){
         return  nome;
@@ -89,6 +90,14 @@ public class Produto {
 
     public void setTamanho(String tamanho) {
         this.tamanho = tamanho;
+    }
+
+    public boolean isMultiSabores() {
+        return isMultiSabores;
+    }
+
+    public void setMultiSabores(boolean multiSabores) {
+        isMultiSabores = multiSabores;
     }
 }
 

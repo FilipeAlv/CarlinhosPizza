@@ -1,4 +1,4 @@
-package br.com.carlinhospizza;
+package br.com.carlinhospizza.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,57 +15,51 @@ import com.example.filipealves.carlinhospizza.R;
 
 import java.util.Calendar;
 import java.util.Date;
-
 import java.util.GregorianCalendar;
+
 import br.com.carlinhospizza.adapter.MyListAdapter;
-import br.com.carlinhospizza.models.Pedido;
 import br.com.carlinhospizza.models.Produto;
+import br.com.carlinhospizza.util.Util;
 
 
-public class MeusPedidos extends AppCompatActivity {
-    public static double valorT=0;
-    public static  TextView valorTotal;
+public class ActivityMeusPedidos extends AppCompatActivity {
+    private double valorT=0;
+    private TextView valorTotal;
     Button confirmarPedido;
-    private Pedido pedido;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meus_pedidos);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        pedido = (Pedido) getIntent().getSerializableExtra("pedido");
         confirmarPedido = (Button) findViewById(R.id.bnt_confirmarPedido);
         confirmarPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(pedido.getProdutos().size()==0){
+                if(Util.PEDIDO.getProdutos().size()==0){
                     Toast.makeText(getApplicationContext(),"Voce não possui pedidos no momento", Toast.LENGTH_SHORT).show();
-                }else if(!validarHorario()){
-                    Toast.makeText(getApplicationContext(),"Desculpe! O horário de pedidos é de 18:00 às 23:30.", Toast.LENGTH_LONG).show();
+                }else if(!validarHorario()) {
+                    Toast.makeText(getApplicationContext(), "Desculpe! O horário de pedidos é de 18:00 às 22:30.", Toast.LENGTH_LONG).show();
                 }else if(validarDia()){
-                    Toast.makeText(getApplicationContext(),"Desculpe! Estamos fechado para descanço. Abriremos amanhã.", Toast.LENGTH_LONG).show();
-
-                }else{
-                    Intent intent = new Intent(MeusPedidos.this, ConfirmarPedido.class);
-                    intent.putExtra("pedido", pedido);
+                    Toast.makeText(getApplicationContext(), "Desculpe! Estamos fechados para descanço. Abriremos amanhã.", Toast.LENGTH_LONG).show();
+                }else {
+                    Intent intent = new Intent(ActivityMeusPedidos.this, ConfirmarPedido.class);
+                    intent.putExtra("valorT", valorT);
                     startActivity(intent);
                 }
             }
         });
 
-        if (pedido.getProdutos().size()==0){
+        if (Util.PEDIDO.getProdutos().size()==0){
             Toast.makeText(this, "Voce não possui pedidos no momento", Toast.LENGTH_SHORT).show();
         }else {
 
             somarProdutos();
 
             valorTotal = findViewById(R.id.listValorTotal);
-            ArrayAdapter<Produto> pedidosAdapter = new MyListAdapter(this, pedido.getProdutos(), valorT, valorTotal);
+            ArrayAdapter<Produto> pedidosAdapter = new MyListAdapter(this, Util.PEDIDO.getProdutos(), valorT, valorTotal);
             ListView lvPedidos = (ListView) findViewById(R.id.lv_pedidos);
             lvPedidos.setAdapter(pedidosAdapter);
-
-
 
             valorTotal.setText("R$"+valorT+"0");
         }
@@ -75,6 +69,14 @@ public class MeusPedidos extends AppCompatActivity {
     protected void onStop() {
         valorT = 0;
         super.onStop();
+    }
+
+    private boolean validarDia(){
+        Calendar hoje = new GregorianCalendar();
+        if(hoje.DAY_OF_WEEK==Calendar.MONDAY){
+            return true;
+        }
+        return false;
     }
 
     private boolean validarHorario(){
@@ -101,19 +103,11 @@ public class MeusPedidos extends AppCompatActivity {
         return false;
     }
 
-    private boolean validarDia(){
-        Calendar hoje = new GregorianCalendar();
-
-        if (hoje.DAY_OF_WEEK==Calendar.MONDAY)
-            return  true;
-        return false;
-    }
 
     public void somarProdutos(){
-        for (Produto produto: pedido.getProdutos()) {
+        for (Produto produto: Util.PEDIDO.getProdutos()) {
             valorT+=Double.parseDouble(produto.getValor());
             produto.setQuantidade(1);
         }
     }
-
 }

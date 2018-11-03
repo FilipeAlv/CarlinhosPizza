@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.com.carlinhospizza.ConfirmarPedido"
+    tools:context="br.com.carlinhospizza.activity.ConfirmarPedido"
     android:orientation="vertical">
         <ScrollView
             android:layout_width="match_parent"
@@ -54,6 +54,8 @@
                     android:layout_marginRight="15dp"
                     android:background="@drawable/estilo_edittext"
                     android:hint="Valor Total"
+                    android:enabled="false"
+                    android:focusable="false"
                     android:padding="10dp" />
 
                 <TextView

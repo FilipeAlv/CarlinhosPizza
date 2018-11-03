@@ -1,4 +1,4 @@
-package br.com.carlinhospizza;
+package br.com.carlinhospizza.activity;
 
 public class CardViewProdutos {
      private String nome, descricao, valor;

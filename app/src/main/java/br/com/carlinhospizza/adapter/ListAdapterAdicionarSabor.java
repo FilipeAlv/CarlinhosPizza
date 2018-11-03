@@ -14,9 +14,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import br.com.carlinhospizza.ActivityMeusPedidos;
-
 import com.example.filipealves.carlinhospizza.R;
+
+import br.com.carlinhospizza.activity.MeusPedidos;
 import br.com.carlinhospizza.models.Produto;
 
 import java.util.ArrayList;
@@ -27,13 +27,12 @@ public class ListAdapterAdicionarSabor extends ArrayAdapter<Produto> {
     private Produto produto;
     private double valorT;
     private TextView valorTotal;
-    public ListAdapterAdicionarSabor(Context context, ArrayList<Produto> elementos, Produto produto, double valorT, TextView valorTotal) {
+    public ListAdapterAdicionarSabor(Context context, ArrayList<Produto> elementos, Produto produto, double valorT) {
         super(context, R.layout.listview_model, elementos);
         this.context=context;
         this.elementos=elementos;
         this.produto = produto;
         this.valorT = valorT;
-        this.valorTotal = valorTotal;
     }
 
     @NonNull
@@ -61,18 +60,14 @@ public class ListAdapterAdicionarSabor extends ArrayAdapter<Produto> {
                                         new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialogInterface, int i) {
-
                                                 if (Double.parseDouble(elementos.get(position).getValor()) >
                                                         Double.parseDouble(produto.getValor())) {
                                                     valorT -= Double.parseDouble(produto.getValor());
                                                     valorT+= Double.parseDouble(elementos.get(position).getValor());
-                                                    valorTotal.setText("R$" + valorT + "0");
+                                                    MyListAdapter.valorTotal.setText("R$"+valorT+"00");
                                                 }
                                                 produto.setObservacao("Metade " + produto.getNome() + ", metade "+ elementos.get(position).getNome());
-                                                Intent intent = new Intent(context, ActivityMeusPedidos.class);
-                                                context.startActivity(intent);
-                                                ((Activity) context).finish();
-
+                                                ((Activity)getContext()).finish();
                                             }
 
                                         })

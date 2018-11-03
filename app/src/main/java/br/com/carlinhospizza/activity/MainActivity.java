@@ -1,4 +1,4 @@
-package br.com.carlinhospizza;
+package br.com.carlinhospizza.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -71,8 +71,11 @@ public class MainActivity extends AppCompatActivity {
                     holder.fab.setImageResource(R.drawable.fab_disponivel_24dp);
                 }
             }
-            fabPedidos.setBackgroundResource(R.drawable.ic_pedidos);
             Util.STATUS = false;
+            fabPedidos.setBackgroundResource(R.drawable.ic_pedidos);
+        }
+        if(Util.PEDIDO.getProdutos().size()==0){
+            fabPedidos.setBackgroundResource(R.drawable.ic_pedidos);
         }
     }
 

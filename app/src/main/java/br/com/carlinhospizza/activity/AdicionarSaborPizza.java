@@ -1,4 +1,4 @@
-package br.com.carlinhospizza;
+package br.com.carlinhospizza.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,7 +28,6 @@ public class AdicionarSaborPizza extends AppCompatActivity {
         produtoNome = bundle.getString("produto");
         tamanho = bundle.getString("tamanho");
         valorT = bundle.getDouble("valorT");
-        valorTotal = findViewById(R.id.listValorTotal);
         Produto produto = new Produto();
         ArrayList<Produto> sabores = new ArrayList<>();
         for (Produto pizza : Util.PRODUTOS) {
@@ -43,7 +42,7 @@ public class AdicionarSaborPizza extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_adicionar_sabor_pizza);
-        ArrayAdapter<Produto> produtoAdapter = new ListAdapterAdicionarSabor(this,sabores, produto, valorT, valorTotal);
+        ArrayAdapter<Produto> produtoAdapter = new ListAdapterAdicionarSabor(this,sabores, produto, valorT);
         ListView lvPedidos = (ListView) findViewById(R.id.lv_sabores);
         lvPedidos.setAdapter(produtoAdapter);
 
