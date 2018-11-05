@@ -22,7 +22,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
-    DAOUsuario daoUsuario = DAOUsuario.getInstance(this);
+    DAOUsuario daoUsuario = DAOUsuario.getInstance(getBaseContext());
     static EditText login;
     static EditText password;
     static TextView tv_esqueceu_senha;
