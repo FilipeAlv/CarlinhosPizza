@@ -64,7 +64,7 @@ public class ListAdapterAdicionarSabor extends ArrayAdapter<Produto> {
                                                         Double.parseDouble(produto.getValor())) {
                                                     valorT -= Double.parseDouble(produto.getValor());
                                                     valorT+= Double.parseDouble(elementos.get(position).getValor());
-                                                    MyListAdapter.valorTotal.setText("R$"+valorT+"00");
+                                                    MyListAdapter.valorTotal.setText("R$"+valorT+"0");
                                                 }
                                                 produto.setObservacao("Metade " + produto.getNome() + ", metade "+ elementos.get(position).getNome());
                                                 ((Activity)getContext()).finish();

@@ -1,5 +1,6 @@
 package br.com.carlinhospizza.activity;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,9 +10,11 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.filipealves.carlinhospizza.R;
 
@@ -45,6 +48,7 @@ public class ConfirmarPedido extends AppCompatActivity {
     private int cliente_id;
     private PedidoRet pedidoCadastrado = new PedidoRet();
     private String formaPagamento = "";
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,7 @@ public class ConfirmarPedido extends AppCompatActivity {
         setContentView(R.layout.activity_confiramar_pedido);
         ArrayList<Usuario> usuarios = DAOUsuario.getInstance(getApplicationContext()).select();
         usuario = usuarios.get(0);
+        progressBar= findViewById(R.id.progressBar);
         Call<Endereco> call = new RetrofitConfig().getClienteService().buscarEndereco(usuario.getLogin());
 
         edNomeRua = findViewById(R.id.edNomeRua);
@@ -115,31 +120,37 @@ public class ConfirmarPedido extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Call<ClienteRet> call = new RetrofitConfig().getClienteService().buscarCliente(usuario.getLogin());
-                call.enqueue(new Callback<ClienteRet>() {
-                    @Override
-                    public void onResponse(Call<ClienteRet> call, Response<ClienteRet> response) {
-                        ClienteRet cliente = response.body();
-                        cliente_id = cliente.getId();
-                        Pedido pedido = new Pedido();
-                        pedido.setDescricao("");
-                        pedido.setValor(edValor.getText().toString());
-                        pedido.setForma_pagamento(formaPagamento);
-                        pedido.setCliente_id(cliente_id);
-                        pedido.setTroco(edTroco.getText().toString());
-                        pedido.setEndereco_id(endereco.getId());
-                        if(dinheiro.isSelected())
-                            formaPagamento = dinheiro.getText().toString();
-                        if(cartao.isSelected())
-                            formaPagamento = cartao.getText().toString();
-                        cadastrarPedido(pedido);
-                    }
+                if (Util.verificaConexao(getApplicationContext())) {
+                    progressBar.setVisibility(View.VISIBLE);
+                    Call<ClienteRet> call = new RetrofitConfig().getClienteService().buscarCliente(usuario.getLogin());
+                    call.enqueue(new Callback<ClienteRet>() {
+                        @Override
+                        public void onResponse(Call<ClienteRet> call, Response<ClienteRet> response) {
+                            ClienteRet cliente = response.body();
+                            cliente_id = cliente.getId();
+                            Pedido pedido = new Pedido();
+                            pedido.setDescricao("");
+                            pedido.setValor(edValor.getText().toString());
+                            pedido.setForma_pagamento(formaPagamento);
+                            pedido.setCliente_id(cliente_id);
+                            pedido.setTroco(edTroco.getText().toString());
+                            pedido.setEndereco_id(endereco.getId());
+                            if (dinheiro.isSelected())
+                                formaPagamento = dinheiro.getText().toString();
+                            if (cartao.isSelected())
+                                formaPagamento = cartao.getText().toString();
+                            cadastrarPedido(pedido);
+                        }
 
-                    @Override
-                    public void onFailure(Call<ClienteRet> call, Throwable t) {
+                        @Override
+                        public void onFailure(Call<ClienteRet> call, Throwable t) {
 
-                    }
-                });
+                        }
+                    });
+                }else{
+                    Toast.makeText(getApplicationContext(), "Impossível conectar-se com o servidor. Verifique sua conexão com a internet",
+                            Toast.LENGTH_LONG).show();
+                }
 
             }
         });
@@ -242,6 +253,7 @@ public class ConfirmarPedido extends AppCompatActivity {
             });
         }
 
+        progressBar.setVisibility(View.GONE);
         new android.app.AlertDialog.Builder(this)
                 .setTitle("Obrigado!")
                 .setMessage("Seu pedido foi realizado com sucesso. Agora é só esperar que em até 40min seu pedido será entregue")

@@ -89,6 +89,13 @@ public class Pedido implements Serializable{
         this.endereco_id = endereco_id;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
 
 

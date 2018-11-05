@@ -50,7 +50,6 @@ public class MeusPedidos extends AppCompatActivity {
                 }else{
                     Intent intent = new Intent(MeusPedidos.this, ConfirmarPedido.class);
                     startActivity(intent);
-                    finish();
                 }
             }
         });
@@ -70,8 +69,9 @@ public class MeusPedidos extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 
     private boolean validarHorario(){

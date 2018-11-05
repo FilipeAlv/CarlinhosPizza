@@ -10,11 +10,10 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
-
 import com.example.filipealves.carlinhospizza.R;
-
 import br.com.carlinhospizza.adapter.PageAdapterPrincipal;
 import br.com.carlinhospizza.adapter.RecycleViewAdapter;
+import br.com.carlinhospizza.controller.Controller;
 import br.com.carlinhospizza.dao.DAOUsuario;
 import br.com.carlinhospizza.models.Pedido;
 import br.com.carlinhospizza.util.Util;
@@ -69,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 if (holder.fab.getTag().equals("selecionado")) {
                     holder.fab.setTag("disponivel");
                     holder.fab.setImageResource(R.drawable.fab_disponivel_24dp);
+                    holder.card.setBackground(Controller.background);
                 }
             }
             Util.STATUS = false;
