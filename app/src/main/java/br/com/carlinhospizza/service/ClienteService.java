@@ -29,8 +29,8 @@ public interface ClienteService {
         @GET("app/listar_endereco_telefone.php")
         Call<Endereco> buscarEndereco(@Query("telefone") String login );
 
-        @GET("app/listar_cliente_login.php")
-        Call<ClienteRet> buscarCliente(@Query("login") String login );
+        @GET("app/listar_cliente_telefone.php")
+        Call<ClienteRet> buscarCliente(@Query("telefone") String telefone );
 
         @GET("app/listar_cliente_telefone_senha.php")
         Call<ClienteRet> validarCliente(@Query("telefone") String login, @Query("senha") String senha);

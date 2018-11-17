@@ -53,10 +53,10 @@ public class RecycleViewAdapter extends RecyclerView.Adapter <RecycleViewAdapter
             holder.tvDescricao.setText(mCardViewProdutosList.get(position).getDescricao());
             holder.tvValor.setText(mCardViewProdutosList.get(position).getValor());
             Drawable background = holder.card.getBackground();
-           // Util.carregarImagem(holder.imgProduto, mCardViewProdutosList.get(position).getURLImagem());
+            Util.carregarImagem(holder.imgProduto, mCardViewProdutosList.get(position).getURLImagem());
             if(mCardViewProdutosList.get(position).isPromocao())
                 holder.imgPromo.setVisibility(View.VISIBLE);
-            holder.fab.setOnClickListener( new Controller(Util.PEDIDO, holder, position, mCardViewProdutosList, background));
+            holder.imgProduto.setOnClickListener( new Controller(Util.PEDIDO, holder, position, mCardViewProdutosList, background));
             holder.card.setOnClickListener( new Controller(Util.PEDIDO, holder, position, mCardViewProdutosList, background));
             HOLDERS.add(holder);
     }
@@ -80,7 +80,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter <RecycleViewAdapter
             tvNome = (TextView) itemView.findViewById(R.id.txtNomeCard);
             tvDescricao = (TextView) itemView.findViewById(R.id.txtDescricaoCard);
             tvValor = (TextView) itemView.findViewById(R.id.txtValorCard);
-            //imgProduto =(ImageView) itemView.findViewById(R.id.imgProduto);
+            imgProduto =(ImageView) itemView.findViewById(R.id.imgProduto);
             fab = (ImageButton) itemView.findViewById(R.id.fab);
             card = itemView.findViewById(R.id.fundoCard);
             imgPromo = itemView.findViewById(R.id.imgPromocao);

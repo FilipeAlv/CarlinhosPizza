@@ -7,12 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.filipealves.carlinhospizza.R;
 import br.com.carlinhospizza.activity.ActivityCadastro;
 import br.com.carlinhospizza.dao.DAOUsuario;
 import br.com.carlinhospizza.models.Cliente;
+import br.com.carlinhospizza.models.ClienteRet;
 import br.com.carlinhospizza.retrofit.RetrofitConfig;
 
 import br.com.carlinhospizza.util.Util;
@@ -25,6 +27,7 @@ public class CadastroLoginSenhaFragment extends Fragment {
     Button btnCadastrar;
     Button btnAnteriorConfirmarCodigo;
     static EditText edNumeroTelefone, edSenha, edConfSenha;
+    private ProgressBar pb;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,7 @@ public class CadastroLoginSenhaFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cadastro_login_e_senha, container, false);
 
+        pb = view.findViewById(R.id.progressBarLogineSenha);
         btnAnteriorConfirmarCodigo = (Button)view.findViewById(R.id.btn_anteriorConfirmarCodigo);
         btnCadastrar = (Button)view.findViewById(R.id.btn_cadastrar);
 
@@ -65,18 +69,42 @@ public class CadastroLoginSenhaFragment extends Fragment {
                 }else if (!edConfSenha.getText().toString().trim().equals(edSenha.getText().toString().trim())){
                     Toast.makeText(view.getContext(), "As senhas inseridas não são iguais", Toast.LENGTH_SHORT).show();
 
-                }
-                    else{
-                    ActivityCadastro.CLIENTE.setTelefone(edNumeroTelefone.getText().toString());
-                    ActivityCadastro.CLIENTE.setPassword(edSenha.getText().toString());
-                    cadastrarCliente(ActivityCadastro.CLIENTE);
-
-                    getActivity().finish();
+                }else{
+                    pb.setVisibility(View.VISIBLE);
+                    telefoneExiste(edNumeroTelefone.getText().toString().trim());
                 }
             }
         });
 
         return view;
+    }
+
+    private void telefoneExiste(String telefone){
+        Call<ClienteRet> call = new RetrofitConfig().getClienteService().buscarCliente(telefone);
+        call.enqueue(new Callback<ClienteRet>() {
+            @Override
+            public void onResponse(Call<ClienteRet> call, Response<ClienteRet> response) {
+                ClienteRet cliente = response.body();
+                if(cliente.getNome()==null&&cliente.getSenha()==null){
+                    Toast.makeText(getContext(),cliente.getNome(), Toast.LENGTH_LONG).show();
+                    ActivityCadastro.CLIENTE.setTelefone(edNumeroTelefone.getText().toString());
+                    ActivityCadastro.CLIENTE.setPassword(edSenha.getText().toString());
+                    cadastrarCliente(ActivityCadastro.CLIENTE);
+
+                    getActivity().finish();
+                }else{
+                    Toast.makeText(getContext(),"Este número de telefone já está sendo utilizado", Toast.LENGTH_LONG).show();
+                    pb.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ClienteRet> call, Throwable t) {
+
+            }
+        });
+
+
     }
 
     private void cadastrarCliente(final Cliente cliente){
@@ -97,10 +125,12 @@ public class CadastroLoginSenhaFragment extends Fragment {
                         call.enqueue(new Callback<String>() {
                             @Override
                             public void onResponse(Call<String> call, Response<String> response) {
+                                pb.setVisibility(View.GONE);
                             }
 
                             @Override
                             public void onFailure(Call<String> call, Throwable t) {
+                                pb.setVisibility(View.GONE);
 
                             }
                         });
