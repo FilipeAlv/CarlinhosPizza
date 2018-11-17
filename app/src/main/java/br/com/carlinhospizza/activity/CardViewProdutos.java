@@ -2,6 +2,7 @@ package br.com.carlinhospizza.activity;
 
 public class CardViewProdutos {
      private String nome, descricao, valor;
+     private boolean promocao;
      private String URLimagem;
 
 
@@ -41,5 +42,13 @@ public class CardViewProdutos {
 
     public void setValor(String valor) {
         this.valor = valor;
+    }
+
+    public boolean isPromocao() {
+        return promocao;
+    }
+
+    public void setPromocao(boolean promocao) {
+        this.promocao = promocao;
     }
 }

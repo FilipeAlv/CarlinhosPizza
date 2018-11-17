@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.filipealves.carlinhospizza.R;
 
-import br.com.carlinhospizza.fragments.fragment_dados_usuario;
+import br.com.carlinhospizza.fragments.CadastroEnderecoFragment;
 import br.com.carlinhospizza.models.Cliente;
 
 public class CadastroActivity extends AppCompatActivity {
@@ -16,7 +16,7 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastrar);
         if(savedInstanceState == null){
             CLIENTE = new Cliente("","");
-            getSupportFragmentManager().beginTransaction().add(R.id.frameLayout_cadastro, new fragment_dados_usuario()).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.frameLayout_cadastro, new CadastroEnderecoFragment()).commit();
         }
 
 

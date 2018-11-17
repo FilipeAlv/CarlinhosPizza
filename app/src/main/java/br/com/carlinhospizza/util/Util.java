@@ -30,6 +30,7 @@ public class Util {
     public static List<Produto> PRODUTOS;
     public static boolean STATUS = false;
     public static Pedido PEDIDO;
+    public static boolean CPFEXISTE;
     public static ArrayList<MyListAdapter.ViewHolderList> HOLDER_ADD_SABOR;
     public static boolean verificaConexao(Context context) {
         boolean conectado;

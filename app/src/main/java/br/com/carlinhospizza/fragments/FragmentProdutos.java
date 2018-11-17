@@ -63,7 +63,8 @@ public class FragmentProdutos extends Fragment {
                     cardViewProdutos.setDescricao(produto.getDescricao());
                     cardViewProdutos.setValor("R$"+produto.getValor());
                     cardViewProdutos.setURLimagem(produto.getURLImagem());
-
+                    if(produto.getStatus().equals("Promocao"))
+                        cardViewProdutos.setPromocao(true);
                     cardViewProdutosList.add(cardViewProdutos);
 
 

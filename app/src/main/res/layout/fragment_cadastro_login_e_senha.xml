@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.com.carlinhospizza.fragments.fragment_codigoDeConfirmacao">
+    tools:context="br.com.carlinhospizza.fragments.CadastroLoginSenhaFragment">
 
     <TextView
         android:layout_width="300dp"
@@ -20,17 +20,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:orientation="vertical">
-
         <EditText
-            android:id="@+id/edLogin"
+            android:id="@+id/edTelefone"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="15dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
             android:background="@drawable/estilo_edittext"
-            android:hint="Login"
-            android:padding="10dp"
-            android:nextFocusDown="@id/edSenha"/>
+            android:hint="Telefone"
+            android:inputType="phone"
+            android:padding="10dp" />
 
         <EditText
             android:id="@+id/edSenha"

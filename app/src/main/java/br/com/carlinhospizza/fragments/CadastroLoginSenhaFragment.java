@@ -15,6 +15,7 @@ import br.com.carlinhospizza.dao.DAOUsuario;
 import br.com.carlinhospizza.models.Cliente;
 import br.com.carlinhospizza.retrofit.RetrofitConfig;
 
+import br.com.carlinhospizza.util.Util;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,7 +24,7 @@ import retrofit2.Response;
 public class CadastroLoginSenhaFragment extends Fragment {
     Button btnCadastrar;
     Button btnAnteriorConfirmarCodigo;
-    static EditText edLogin, edSenha, edConfSenha;
+    static EditText edNumeroTelefone, edSenha, edConfSenha;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,8 @@ public class CadastroLoginSenhaFragment extends Fragment {
         btnAnteriorConfirmarCodigo = (Button)view.findViewById(R.id.btn_anteriorConfirmarCodigo);
         btnCadastrar = (Button)view.findViewById(R.id.btn_cadastrar);
 
-        edLogin = (EditText)view.findViewById(R.id.edLogin);
+        edNumeroTelefone = (EditText)view.findViewById(R.id.edTelefone);
+        Util.mascararEditText("(NN)NNNNN-NNNN", edNumeroTelefone);
         edSenha = (EditText) view.findViewById(R.id.edSenha);
         edConfSenha = view.findViewById(R.id.edConfirmarSenha);
 
@@ -48,7 +50,7 @@ public class CadastroLoginSenhaFragment extends Fragment {
         btnAnteriorConfirmarCodigo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout_cadastro, new CadastroTelefoneFragment()).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout_cadastro, new CadastroEnderecoFragment()).commit();
             }
         });
 
@@ -56,7 +58,7 @@ public class CadastroLoginSenhaFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(
-                        edLogin.getText().length()==0||
+                        edNumeroTelefone.getText().length()==0||
                         edSenha.getText().length()==0||
                         edConfSenha.getText().length()==0){
                     Toast.makeText(view.getContext(), "Verifique se todos os dados estão preenchidos corretamente", Toast.LENGTH_SHORT).show();
@@ -65,7 +67,7 @@ public class CadastroLoginSenhaFragment extends Fragment {
 
                 }
                     else{
-                    ActivityCadastro.CLIENTE.setLogin(edLogin.getText().toString());
+                    ActivityCadastro.CLIENTE.setTelefone(edNumeroTelefone.getText().toString());
                     ActivityCadastro.CLIENTE.setPassword(edSenha.getText().toString());
                     cadastrarCliente(ActivityCadastro.CLIENTE);
 

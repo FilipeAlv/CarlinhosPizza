@@ -29,4 +29,8 @@
 
     <color name="contornoCard">#90ef4848</color>
     <color name="contornoCardSelecionado">#259330</color>
+
+    <color name="botaoAlert">#259330</color>
+
+
 </resources>

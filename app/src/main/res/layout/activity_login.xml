@@ -29,8 +29,9 @@
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/estilo_edittext"
-            android:hint="Login"
-            android:padding="10dp" />
+            android:hint="Telefone"
+            android:padding="10dp"
+            android:inputType="number"/>
 
         <EditText
             android:id="@+id/edit_txt_password"
@@ -75,6 +76,17 @@
             android:textSize="20px" />
     </LinearLayout>
     </LinearLayout>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:foregroundGravity="center"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:elevation="20dp"
+        android:id="@+id/progressBarLogin"
+        android:background="#ffffff"
+        />
     <Button
         android:id="@+id/btn_Cadastrar"
         android:layout_width="match_parent"

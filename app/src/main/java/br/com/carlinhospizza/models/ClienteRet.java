@@ -5,6 +5,7 @@ public class ClienteRet {
     private String nome;
     private String login;
     private String senha;
+    private String cpf;
 
     public int getId() {
         return id;
@@ -36,5 +37,13 @@ public class ClienteRet {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 }

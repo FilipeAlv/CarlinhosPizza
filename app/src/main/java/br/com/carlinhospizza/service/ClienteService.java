@@ -26,13 +26,25 @@ public interface ClienteService {
                 @Query("telefone") String telefone
         );
 
-        @GET("app/listar_endereco_login.php")
-        Call<Endereco> buscarEndereco(@Query("login") String login );
+        @GET("app/listar_endereco_telefone.php")
+        Call<Endereco> buscarEndereco(@Query("telefone") String login );
 
         @GET("app/listar_cliente_login.php")
         Call<ClienteRet> buscarCliente(@Query("login") String login );
 
-        @GET("app/listar_cliente_login_senha.php")
-        Call<ClienteRet> validarCliente(@Query("login") String login, @Query("senha") String senha);
+        @GET("app/listar_cliente_telefone_senha.php")
+        Call<ClienteRet> validarCliente(@Query("telefone") String login, @Query("senha") String senha);
 
+        @GET("app/listar_cliente_cpf.php")
+        Call<ClienteRet> buscarClientePorCpf(@Query("cpf") String cpf);
+
+        @GET("app/validar_esqueceu_senha.php")
+        Call<ClienteRet> validarEsqueceuSenha(
+                @Query("cpf") String cpf,
+                @Query("dataNascimento") String dtNescimento,
+                @Query("telefone") String telefone);
+
+        @GET("app/atualizar_senha_cliente.php")
+        Call<ClienteRet> atualizarSenha(@Query("senha") String senha, @Query("cpf") String cpf);
+        
 }

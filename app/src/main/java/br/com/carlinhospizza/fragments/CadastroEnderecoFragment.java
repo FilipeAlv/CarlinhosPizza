@@ -76,7 +76,7 @@ public class CadastroEnderecoFragment extends Fragment {
                                 edCep.getText().length()==0||
                                 edPontoDeReferencia.getText().length()==0||
                                 edBairro.getText().length()==0){
-                    Toast.makeText(view.getContext(), "Verifique se todos os dados estão preenchidos corretamente.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext(), "Todos os campos devem ser preenchidos.", Toast.LENGTH_SHORT).show();
                 }else {
                     Endereco endereco = new Endereco();
                     endereco.setRua(edNomeRua.getText().toString());
@@ -86,7 +86,7 @@ public class CadastroEnderecoFragment extends Fragment {
                     endereco.setCidade(edCidade.getSelectedItem().toString());
                     endereco.setPonto_referencia(edPontoDeReferencia.getText().toString());
                     ActivityCadastro.CLIENTE.setEndereco(endereco);
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout_cadastro, new CadastroTelefoneFragment()).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout_cadastro, new CadastroLoginSenhaFragment()).commit();
 
                     }
                 }

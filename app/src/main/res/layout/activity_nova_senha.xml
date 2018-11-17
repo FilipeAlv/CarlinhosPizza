@@ -4,66 +4,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    tools:context="br.com.carlinhospizza.activity.ActivityEqueceuSenha"
-   >
+    tools:context="br.com.carlinhospizza.activity.NovaSenha">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal">
-        <TextView
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:text="Precisamos verificar alguns dados para liberar uma nova senha"
-            android:textAlignment="center"
-            android:textStyle="bold"
-            android:textSize="30px"
-            />
-
         <EditText
-            android:id="@+id/edCpfEsqSen"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="50dp"
-            android:hint="CPF"
-            android:background="@drawable/estilo_edittext"
-            android:padding="10dp"
-            android:inputType="number"
-            />
-        <EditText
-            android:id="@+id/edTelefoneEsqSen"
+            android:id="@+id/ednovaSenha"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
-            android:hint="Telefone"
+            android:hint="Nova Senha"
             android:background="@drawable/estilo_edittext"
             android:padding="10dp"
-            android:inputType="number"
+            android:inputType="textPassword"
             />
         <EditText
-            android:id="@+id/edData_nascimentoEsqSen"
+            android:id="@+id/edConfirmarNovaSen"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
-            android:padding="10dp"
+            android:hint="Confirmar Senha"
             android:background="@drawable/estilo_edittext"
-            android:hint="Data de nascimento"
-            android:inputType="date"
+            android:padding="10dp"
+            android:inputType="textPassword"
             />
 
         <Button
-            android:id="@+id/button_recuperar"
+            android:id="@+id/btn_salvar"
             android:layout_width="297dp"
             android:layout_height="wrap_content"
             android:background="@drawable/estilo_botao"
             android:layout_marginTop="20dp"
             android:color="@color/colorTextNomeCard"
             android:shape="rectangle"
-            android:text="Recuperar"
+            android:text="Salvar"
             android:textColor="@color/colorTextNomeCard" />
+
+
     </LinearLayout>
     <ProgressBar
         android:layout_width="wrap_content"
@@ -73,7 +52,7 @@
         android:layout_centerInParent="true"
         android:visibility="gone"
         android:elevation="20dp"
-        android:id="@+id/progressBarEsqueciSenha"
+        android:id="@+id/progressBarNovaSenha"
         android:background="#ffffff"
         />
 </RelativeLayout>
