@@ -68,6 +68,7 @@ public class NovaSenha extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         }else{
+                            pb.setVisibility(View.GONE);
                             Toast.makeText(getApplicationContext(), "Erro ao tentar se conectar com o servidor", Toast.LENGTH_LONG).show();
                         }
                     }

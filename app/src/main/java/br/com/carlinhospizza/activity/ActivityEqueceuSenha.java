@@ -79,6 +79,7 @@ public class ActivityEqueceuSenha extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         }else{
+                            pb.setVisibility(View.GONE);
                             Toast.makeText(getApplicationContext(), "Dados não encontrados.", Toast.LENGTH_LONG).show();
                         }
                     }

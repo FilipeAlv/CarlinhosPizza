@@ -88,6 +88,7 @@ public class Login extends AppCompatActivity {
                 if(usuario.getLogin()!=null) {
                     mudarActivity(usuario);
                 }else {
+                    pb.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(), "Telefone ou senha incorretos.", Toast.LENGTH_SHORT).show();
                     edPassword.setText("");
                 }
