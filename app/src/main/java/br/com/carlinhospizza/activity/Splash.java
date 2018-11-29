@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-
-import com.example.filipealves.carlinhospizza.R;
-
+import br.com.carlinhospizza.R;
 import br.com.carlinhospizza.dao.DAOUsuario;
 import br.com.carlinhospizza.models.Produto;
 import br.com.carlinhospizza.models.Usuario;

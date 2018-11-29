@@ -8,30 +8,18 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Toast;
-
+import br.com.carlinhospizza.R;
 import br.com.carlinhospizza.activity.CardViewProdutos;
-
-import com.example.filipealves.carlinhospizza.R;
 import br.com.carlinhospizza.activity.Splash;
 import br.com.carlinhospizza.adapter.RecycleViewAdapter;
 import br.com.carlinhospizza.models.Produto;
-import br.com.carlinhospizza.retrofit.RetrofitConfig;
 import br.com.carlinhospizza.util.Util;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class FragmentProdutos extends Fragment {

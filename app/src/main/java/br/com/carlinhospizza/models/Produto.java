@@ -96,6 +96,8 @@ public class Produto {
         return isMultiSabores;
     }
 
+
+
     public void setMultiSabores(boolean multiSabores) {
         isMultiSabores = multiSabores;
     }

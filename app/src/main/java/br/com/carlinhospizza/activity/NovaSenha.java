@@ -4,18 +4,14 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.filipealves.carlinhospizza.R;
-
-import br.com.carlinhospizza.models.Cliente;
+import br.com.carlinhospizza.R;
 import br.com.carlinhospizza.models.ClienteRet;
-import br.com.carlinhospizza.models.Usuario;
 import br.com.carlinhospizza.retrofit.RetrofitConfig;
 import retrofit2.Call;
 import retrofit2.Callback;

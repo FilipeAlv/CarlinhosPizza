@@ -10,13 +10,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.filipealves.carlinhospizza.R;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import br.com.carlinhospizza.R;
 import br.com.carlinhospizza.adapter.MyListAdapter;
 import br.com.carlinhospizza.models.Produto;
 import br.com.carlinhospizza.util.Util;

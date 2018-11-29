@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import com.example.filipealves.carlinhospizza.R;
+import br.com.carlinhospizza.R;
 import br.com.carlinhospizza.activity.ActivityCadastro;
 import br.com.carlinhospizza.activity.ActivityEqueceuSenha;
 import br.com.carlinhospizza.models.ClienteRet;

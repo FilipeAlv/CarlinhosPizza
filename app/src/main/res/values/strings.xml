@@ -44,11 +44,17 @@
         Precisamos agora do seu telefone e que você crie uma senha para acessar nosso aplicativo em qualquer dispositivo.
     </string>
 
+    <string name="facebook_app_id">436373616896027</string>
 
     <string name="cidade">Cidade</string>
+
+    <string name="fora_do_horario">Desculpe! O horário de pedidos é de 18:00 às 23:30.</string>
 
     <string-array name="cidades_list">
         <item>Belmonte</item>
     </string-array>
     <string name="title_activity_esqueci__minha__senha">activity_esqueci_minha_senha</string>
+
 </resources>
+
+

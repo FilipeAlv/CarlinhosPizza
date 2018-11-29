@@ -10,17 +10,14 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.filipealves.carlinhospizza.R;
-
 import java.util.Calendar;
 import java.util.Date;
-
 import java.util.GregorianCalendar;
+
+import br.com.carlinhospizza.R;
 import br.com.carlinhospizza.adapter.MyListAdapter;
 import br.com.carlinhospizza.models.Pedido;
 import br.com.carlinhospizza.models.Produto;
-import br.com.carlinhospizza.util.Util;
 
 
 public class MeusPedidos extends AppCompatActivity {
@@ -42,11 +39,10 @@ public class MeusPedidos extends AppCompatActivity {
             public void onClick(View view) {
                 if(pedido.getProdutos().size()==0){
                     Toast.makeText(getApplicationContext(),"Voce não possui pedidos no momento", Toast.LENGTH_SHORT).show();
-                }else if(!validarHorario()){
-                    Toast.makeText(getApplicationContext(),"Desculpe! O horário de pedidos é de 18:00 às 23:30.", Toast.LENGTH_LONG).show();
                 }else if(validarDia()){
                     Toast.makeText(getApplicationContext(),"Desculpe! Estamos fechado para descanço. Abriremos amanhã.", Toast.LENGTH_LONG).show();
-
+                }else if(!validarHorario()){
+                    Toast.makeText(getApplicationContext(),R.string.fora_do_horario, Toast.LENGTH_LONG).show();
                 }else{
                     Intent intent = new Intent(MeusPedidos.this, ConfirmarPedido.class);
                     startActivity(intent);

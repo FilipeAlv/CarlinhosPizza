@@ -1,8 +1,6 @@
 package br.com.carlinhospizza.activity;
 
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -15,9 +13,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.filipealves.carlinhospizza.R;
-
+import br.com.carlinhospizza.R;
 import br.com.carlinhospizza.adapter.MyListAdapter;
 import br.com.carlinhospizza.dao.DAOUsuario;
 import br.com.carlinhospizza.models.ClienteRet;
@@ -34,6 +30,7 @@ import java.util.ArrayList;
 import br.com.carlinhospizza.util.Util;
 import retrofit2.Call;
 import retrofit2.Callback;
+
 import retrofit2.Response;
 
 public class ConfirmarPedido extends AppCompatActivity {

@@ -1,8 +1,6 @@
 package br.com.carlinhospizza.activity;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,8 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
-import com.example.filipealves.carlinhospizza.R;
+import br.com.carlinhospizza.R;
 import br.com.carlinhospizza.models.ClienteRet;
 import br.com.carlinhospizza.retrofit.RetrofitConfig;
 import br.com.carlinhospizza.util.Util;

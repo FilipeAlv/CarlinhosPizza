@@ -9,14 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
-import com.example.filipealves.carlinhospizza.R;
+import br.com.carlinhospizza.R;
 import br.com.carlinhospizza.activity.ActivityCadastro;
 import br.com.carlinhospizza.dao.DAOUsuario;
 import br.com.carlinhospizza.models.Cliente;
 import br.com.carlinhospizza.models.ClienteRet;
 import br.com.carlinhospizza.retrofit.RetrofitConfig;
-
 import br.com.carlinhospizza.util.Util;
 import retrofit2.Call;
 import retrofit2.Callback;

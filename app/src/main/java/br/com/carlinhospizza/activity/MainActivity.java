@@ -10,7 +10,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
-import com.example.filipealves.carlinhospizza.R;
+
+import br.com.carlinhospizza.R;
 import br.com.carlinhospizza.adapter.PageAdapterPrincipal;
 import br.com.carlinhospizza.adapter.RecycleViewAdapter;
 import br.com.carlinhospizza.controller.Controller;

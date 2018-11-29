@@ -3,10 +3,10 @@ package br.com.carlinhospizza.controller;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageButton;
+
+import br.com.carlinhospizza.R;
 import br.com.carlinhospizza.activity.CardViewProdutos;
 import br.com.carlinhospizza.activity.MainActivity;
-import com.example.filipealves.carlinhospizza.R;
-
 import br.com.carlinhospizza.models.Pedido;
 import br.com.carlinhospizza.models.Produto;
 import br.com.carlinhospizza.adapter.RecycleViewAdapter;

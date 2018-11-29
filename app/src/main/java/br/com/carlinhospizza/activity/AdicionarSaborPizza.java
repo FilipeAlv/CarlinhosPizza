@@ -6,8 +6,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.filipealves.carlinhospizza.R;
-
+import br.com.carlinhospizza.R;
 import br.com.carlinhospizza.adapter.ListAdapterAdicionarSabor;
 import br.com.carlinhospizza.models.Produto;
 import br.com.carlinhospizza.util.Util;

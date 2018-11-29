@@ -15,16 +15,14 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import br.com.carlinhospizza.activity.AdicionarSaborPizza;
-import com.example.filipealves.carlinhospizza.R;
+import org.w3c.dom.Text;
 
+import br.com.carlinhospizza.R;
+import br.com.carlinhospizza.activity.AdicionarSaborPizza;
 import br.com.carlinhospizza.controller.Controller;
 import br.com.carlinhospizza.models.Produto;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-
-import br.com.carlinhospizza.util.Util;
 
 public class MyListAdapter extends ArrayAdapter<Produto> {
     private final Context context;
@@ -52,9 +50,11 @@ public class MyListAdapter extends ArrayAdapter<Produto> {
         final TextView valorProduto = view.findViewById(R.id.listValorProduto);
         final ImageButton iconDelete = view.findViewById(R.id.listIconDelete);
         final ViewHolderList holderList = new ViewHolderList(view);
+        final TextView quantidade = view.findViewById(R.id.Quantidade);
 
         nomeProduto.setText(elementos.get(position).getNome());
         valorProduto.setText("R$"+elementos.get(position).getValor());
+        quantidade.setText(""+elementos.get(position).getQuantidade());
         iconDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -154,15 +154,14 @@ public class MyListAdapter extends ArrayAdapter<Produto> {
                                                     new DialogInterface.OnClickListener() {
                                                         @Override
                                                         public void onClick(DialogInterface dialogInterface, int i) {
-                                                            elementos.get(position).setObservacao(input.getText().toString());
+                                                            String ob = elementos.get(position).getObservacao();
+                                                            if (ob!=null)
+                                                                elementos.get(position).setObservacao(input.getText().toString());
+                                                            else
+                                                                elementos.get(position).setObservacao(ob + " | " + input.getText().toString());
                                                         }
                                                     })
-                                                    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(DialogInterface dialogInterface, int i) {
-
-                                                        }
-                                                    });
+                                                    .setNegativeButton("Cancelar", null);
                                             alertDialog.show();
                                         }
                                     }).show();
@@ -186,12 +185,7 @@ public class MyListAdapter extends ArrayAdapter<Produto> {
                                     elementos.get(position).setObservacao(input.getText().toString());
                                 }
                             })
-                            .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-
-                                }
-                            });
+                            .setNegativeButton("Cancelar", null);
                     alertDialog.show();
                 }
             });
