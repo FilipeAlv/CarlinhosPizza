@@ -1,5 +1,7 @@
 package br.com.carlinhospizza.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -84,12 +86,12 @@ public class CadastroLoginSenhaFragment extends Fragment {
             public void onResponse(Call<ClienteRet> call, Response<ClienteRet> response) {
                 ClienteRet cliente = response.body();
                 if(cliente.getNome()==null&&cliente.getSenha()==null){
-                    Toast.makeText(getContext(),cliente.getNome(), Toast.LENGTH_LONG).show();
                     ActivityCadastro.CLIENTE.setTelefone(edNumeroTelefone.getText().toString());
                     ActivityCadastro.CLIENTE.setPassword(edSenha.getText().toString());
                     cadastrarCliente(ActivityCadastro.CLIENTE);
-
+                    Toast.makeText(getContext(),"Cadastro realizado com sucesso", Toast.LENGTH_LONG).show();
                     getActivity().finish();
+
                 }else{
                     Toast.makeText(getContext(),"Este número de telefone já está sendo utilizado", Toast.LENGTH_LONG).show();
                     pb.setVisibility(View.GONE);
@@ -98,7 +100,8 @@ public class CadastroLoginSenhaFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ClienteRet> call, Throwable t) {
-
+                Toast.makeText(getContext(),"Problemas ao conectar com o servidor. Verifique sua conexão e tente novamente", Toast.LENGTH_LONG).show();
+                pb.setVisibility(View.GONE);
             }
         });
 

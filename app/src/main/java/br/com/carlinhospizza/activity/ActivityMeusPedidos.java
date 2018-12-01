@@ -36,10 +36,10 @@ public class ActivityMeusPedidos extends AppCompatActivity {
             public void onClick(View view) {
                 if(Util.PEDIDO.getProdutos().size()==0){
                     Toast.makeText(getApplicationContext(),"Voce não possui pedidos no momento", Toast.LENGTH_SHORT).show();
-                }else if(!validarHorario()) {
-                    Toast.makeText(getApplicationContext(), "Desculpe! O horário de pedidos é de 18:00 às 22:30.", Toast.LENGTH_LONG).show();
                 }else if(validarDia()){
                     Toast.makeText(getApplicationContext(), "Desculpe! Estamos fechados para descanço. Abriremos amanhã.", Toast.LENGTH_LONG).show();
+                }else if(!validarHorario()) {
+                    Toast.makeText(getApplicationContext(), "Desculpe! O horário de pedidos é de 18:00 às 23:30.", Toast.LENGTH_LONG).show();
                 }else {
                     Intent intent = new Intent(ActivityMeusPedidos.this, ConfirmarPedido.class);
                     intent.putExtra("valorT", valorT);

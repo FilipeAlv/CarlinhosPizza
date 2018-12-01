@@ -63,8 +63,13 @@ public class ListAdapterAdicionarSabor extends ArrayAdapter<Produto> {
                                                     valorT+= Double.parseDouble(elementos.get(position).getValor());
                                                     MyListAdapter.valorTotal.setText("R$"+valorT+"0");
                                                 }
-                                                produto.setObservacao(produto.getObservacao()+" | Metade " + produto.getNome() + ", metade "+ elementos.get(position).getNome());
-                                                ((Activity)getContext()).finish();
+                                                String ob=produto.getObservacao();
+                                                if(ob!=null) {
+                                                    produto.setObservacao(produto.getObservacao() + " | Metade " + produto.getNome() + ", metade " + elementos.get(position).getNome());
+                                                }else{
+                                                    produto.setObservacao(" Metade " + produto.getNome() + ", metade " + elementos.get(position).getNome());
+                                                }
+                                                    ((Activity)getContext()).finish();
                                             }
 
                                         })

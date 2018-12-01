@@ -1,9 +1,11 @@
 package br.com.carlinhospizza.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -57,8 +59,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        System.exit(0);
+        new AlertDialog.Builder(this)
+                .setTitle("Sair")
+                .setMessage("Tem certeza que deseja sair do aplicativo?")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("Não", null).show();
     }
 
     @Override
@@ -95,17 +105,27 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
         if(id == R.id.action_logOf){
             if(Login.logado == true) {
-                daoUsuario.deleteAll();
+                new AlertDialog.Builder(this)
+                        .setTitle("Sair")
+                        .setMessage("Tem certeza que deseja sair da sua conta?")
+                        .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                daoUsuario.deleteAll();
 
-                Intent intent = new Intent(MainActivity.this, Login.class);
-                startActivity(intent);
-                finish();
-                Login.logado = false;
+                                Intent intent = new Intent(MainActivity.this, Login.class);
+                                startActivity(intent);
+                                finish();
+                                Login.logado = false;
+                            }
+                        })
+                        .setNegativeButton("Não", null).show();
+
             }
         }
         return super.onOptionsItemSelected(item);

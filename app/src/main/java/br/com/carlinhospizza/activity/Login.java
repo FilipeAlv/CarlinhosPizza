@@ -113,6 +113,8 @@ public class Login extends AppCompatActivity {
                 startActivity(i);
                 logado = true;
                 pb.setVisibility(View.GONE);
+
+                finish();
             }
         },1000);
 
