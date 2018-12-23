@@ -1,8 +1,6 @@
 package br.com.carlinhospizza.util;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -10,18 +8,11 @@ import android.widget.ImageView;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.squareup.picasso.Picasso;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 
 import br.com.carlinhospizza.adapter.MyListAdapter;
-import br.com.carlinhospizza.adapter.RecycleViewAdapter;
 import br.com.carlinhospizza.models.Pedido;
 import br.com.carlinhospizza.models.Produto;
 

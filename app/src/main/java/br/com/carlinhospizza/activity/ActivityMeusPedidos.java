@@ -71,7 +71,8 @@ public class ActivityMeusPedidos extends AppCompatActivity {
 
     private boolean validarDia(){
         Calendar hoje = new GregorianCalendar();
-        if(hoje.DAY_OF_WEEK==Calendar.MONDAY){
+        hoje.setTime(new Date());
+        if(hoje.get(Calendar.DAY_OF_WEEK)==Calendar.MONDAY){
             return true;
         }
         return false;

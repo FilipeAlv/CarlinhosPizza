@@ -155,10 +155,12 @@ public class MyListAdapter extends ArrayAdapter<Produto> {
                                                         @Override
                                                         public void onClick(DialogInterface dialogInterface, int i) {
                                                             String ob = elementos.get(position).getObservacao();
-                                                            if (ob!=null)
-                                                                elementos.get(position).setObservacao(input.getText().toString());
-                                                            else
+                                                            if (ob==null) {
                                                                 elementos.get(position).setObservacao(ob + " | " + input.getText().toString());
+
+                                                            }else {
+                                                                elementos.get(position).setObservacao(input.getText().toString());
+                                                            }
                                                         }
                                                     })
                                                     .setNegativeButton("Cancelar", null);
@@ -182,8 +184,13 @@ public class MyListAdapter extends ArrayAdapter<Produto> {
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    elementos.get(position).setObservacao(input.getText().toString());
-                                }
+                                    String ob = elementos.get(position).getObservacao();
+                                    if (ob==null) {
+                                        elementos.get(position).setObservacao(ob + " | " + input.getText().toString());
+                                    }else {
+                                        elementos.get(position).setObservacao(input.getText().toString());
+                                    }
+                                    }
                             })
                             .setNegativeButton("Cancelar", null);
                     alertDialog.show();
